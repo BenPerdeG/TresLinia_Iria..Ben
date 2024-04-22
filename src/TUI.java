@@ -23,26 +23,32 @@ public class TUI {
                 return 5;
         }
     }
+
     public static void menu(){
+        bucle:
+        while (true) {
+            System.out.println("Por favor seleccione que desea hacer:");
+            System.out.println(" 1.Nueva Partida \n 2.Cargar Partida \n 3.Configuración\n 4.Salir\n");
         switch (seleccion()){
             case 1:
                 //Nueva partida
-                System.out.println("Su selección ha sido: Nueva partida");
+                System.out.println("Su selección ha sido: Nueva partida\n");
                 break;
             case 2:
                 //Cargar partida
-                System.out.println("Su selección ha sido: Cargar partida");
+                System.out.println("Su selección ha sido: Cargar partida\n");
                 break;
             case 3:
                 //Configuración
-                System.out.println("Su selección ha sido: Configuración");
+                System.out.println("Su selección ha sido: Configuración\n");
                 break;
             case 4:
                 //Finalizar
-                System.out.println("¡Hasta pronto!");
-                break;
+                System.out.println("¡Hasta pronto!\n");
+                break bucle;
             default:
-                System.out.println("Ha habido un error con el input. Prueba de nuevo");
+                System.out.println("Ha habido un error con el input. Prueba de nuevo\n");
         }
     }
+}
 }
