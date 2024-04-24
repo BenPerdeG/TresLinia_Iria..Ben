@@ -4,7 +4,6 @@ public class Main {
         System.out.println("Bienvenido al increíble y turbo dinámico 'Tres en Raya Hipersport 2024'");
         System.out.println("-----------------------------------------------------------------------");
         p.menu();
-        //Hola!
     }
 
     //Metodos
