@@ -1,15 +1,15 @@
 public class Joc {
 
 
-    public static void mostrar_tablero(){
+    public static char[][]tablero(){
 
         String linea1 = " | | ";
         String linea2 = " | | ";
         String linea3 = " | | ";
-        String lineamid = "-----";
+        String lineamid = "_____";
 
 
-     char tablero[][] = new char[5][5];
+        char tablero[][] = new char[5][5];
 
         tablero[0] = linea1.toCharArray();
         tablero[1] = lineamid.toCharArray();
@@ -17,10 +17,13 @@ public class Joc {
         tablero[3] = lineamid.toCharArray();
         tablero[4] = linea3.toCharArray();
 
+        return tablero;
+    }
 
-        for (int i =0; i< tablero.length;i++) {
+    public static void mostrar_tablero(){
+        for (int i =0; i< tablero().length;i++) {
 
-                System.out.println(tablero[i]);
+                System.out.println(tablero()[i]);
         }
     }
 }
