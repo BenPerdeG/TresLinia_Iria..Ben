@@ -6,7 +6,7 @@ public class Joc {
         String linea1 = " | | ";
         String linea2 = " | | ";
         String linea3 = " | | ";
-        String lineamid = "_____";
+        String lineamid = "-----";
 
 
      char tablero[][] = new char[5][5];
