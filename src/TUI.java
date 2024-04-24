@@ -32,15 +32,18 @@ public class TUI {
         switch (seleccion()){
             case 1:
                 //Nueva partida
-                System.out.println("Su selección ha sido: Nueva partida\n");
+                System.out.println("Su selección ha sido: Nueva partida");
+                nueva_partida();
                 break;
             case 2:
                 //Cargar partida
-                System.out.println("Su selección ha sido: Cargar partida\n");
+                System.out.println("Su selección ha sido: Cargar partida");
+                cargar_partida();
                 break;
             case 3:
                 //Configuración
-                System.out.println("Su selección ha sido: Configuración\n");
+                System.out.println("Su selección ha sido: Configuración");
+                congiguracion();
                 break;
             case 4:
                 //Finalizar
@@ -51,4 +54,17 @@ public class TUI {
         }
     }
 }
+//Metodos
+    public static void nueva_partida (){
+        not_implemented();
+    }
+    public static void cargar_partida (){
+        not_implemented();
+    }
+    public static void congiguracion (){
+        not_implemented();
+    }
+    public static void not_implemented (){
+        System.out.println("Metódo no implementado\n");
+    }
 }
