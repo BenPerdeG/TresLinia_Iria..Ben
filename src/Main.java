@@ -7,5 +7,20 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------");
        p.menu();
     }
+
+    //Metodos
+    public static void nueva_partida (){
+        not_implemented();
+    }
+    public static void cargar_partida (){
+        not_implemented();
+    }
+    public static void congiguracion (){
+        not_implemented();
+    }
+    public static void not_implemented (){
+        System.out.println("Metódo no implementado\n");
+    }
+
 }
 
