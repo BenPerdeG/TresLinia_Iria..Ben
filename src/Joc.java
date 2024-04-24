@@ -6,7 +6,7 @@ public class Joc {
         String linea1 = " | | ";
         String linea2 = " | | ";
         String linea3 = " | | ";
-        String lineamid = "-|-|-";
+        String lineamid = "_____";
 
 
      char tablero[][] = new char[5][5];
@@ -19,10 +19,8 @@ public class Joc {
 
 
         for (int i =0; i< tablero.length;i++) {
-            for (int j =0; j< tablero.length;j++){
-                System.out.print(tablero[i][j]);
-            }
-            System.out.println();
+
+                System.out.println(tablero[i]);
         }
     }
 }
