@@ -23,8 +23,10 @@ public class Test {
     @org.junit.jupiter.api.Test
     void una_jugada() {
         Joc j = new Joc();
-        j.jugar(1,1);
+        j.jugarX(1,1);
         Assertions.assertEquals('x',j.tablero_actual[0][0]);
+        j.jugarO(2,2);
+        Assertions.assertEquals('o',j.tablero_actual[0][0]);
     }
 
 

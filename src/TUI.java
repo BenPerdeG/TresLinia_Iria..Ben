@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TUI {
     public static short seleccion() {
-
+    //Selección de menú
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
@@ -24,7 +24,7 @@ public class TUI {
         }
     }
 
-    public static void menu() {
+    public void menu() {
         bucle:
         while (true) {
             System.out.println("Por favor seleccione que desea hacer:");

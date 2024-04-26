@@ -8,8 +8,8 @@ public class Main {
     }
 
     //Metodos
-    public static void nueva_partida (){
-        Joc.mostrar_tablero();
+    public static void nueva_partida(){
+
         // Comenzar con el tablero vacio
         int i;
         int j;
@@ -19,6 +19,7 @@ public class Main {
                 Joc.tablero();
             }
         }
+        Joc.mostrar_tablero();
 
         //Definir con que carácter juega cada uno de los jugadores y quien comienza.
 
