@@ -36,5 +36,8 @@ boolean turno_jugador1 = false;
         }
         return turno_jugador1;
     }
+    public  static void jugar(int coor1, int coord2){
+        tablero()[coor1][coord2]='x';
+    }
 
 }
