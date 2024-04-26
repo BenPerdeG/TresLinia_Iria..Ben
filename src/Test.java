@@ -4,18 +4,14 @@ public class Test {
     // Comprobar tablero en blanco
     @org.junit.jupiter.api.Test
     void Tablero_Blanco() {
-            Joc j = new Joc();
-            String linea1 = " | | ";
-            String linea2 = " | | ";
-            String linea3 = " | | ";
+        char tab [][] = new char[3][3];
 
-
-            char tablero[][] = new char[3][5];
-
-            tablero[0] = linea1.toCharArray();
-            tablero[1] = linea2.toCharArray();
-            tablero[2] = linea3.toCharArray();
-            Assertions.assertArrayEquals(tablero,j.tablero());
+        for (int i = 0; i<tab.length; i++){
+            for (int j = 0; j<tab.length; j++){
+                tab[i][j] = ' ';
+            }
+        }
+            Assertions.assertArrayEquals(tab,Joc.tablero());
     }
 
     @org.junit.jupiter.api.Test
@@ -28,7 +24,7 @@ public class Test {
     void una_jugada() {
         Joc j = new Joc();
         j.jugar(1,1);
-        Assertions.assertEquals('x',j.tablero()[1][1]);
+        Assertions.assertEquals('x',j.tablero_actual[0][0]);
     }
 
 

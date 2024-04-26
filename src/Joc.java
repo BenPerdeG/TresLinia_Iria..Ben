@@ -1,6 +1,8 @@
 public class Joc {
 
 boolean turno_jugador1 = false;
+char [][] tablero_actual = tablero();
+
 
     public static char[][]tablero(){
 
@@ -29,10 +31,8 @@ boolean turno_jugador1 = false;
         }
         return turno_jugador1;
     }
-    public  static void jugar(int coor1, int coord2){
-        tablero()[coor1][coord2]='x';
+    public void jugar(int coord1, int coord2){
+        tablero_actual[coord1-1][coord2-1]='x';
+
     }
-
-
-
 }
