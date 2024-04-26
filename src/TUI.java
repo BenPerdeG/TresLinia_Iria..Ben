@@ -25,6 +25,8 @@ public class TUI {
     }
 
     public void menu() {
+        System.out.println("Bienvenido al increíble y turbo dinámico 'Tres en Raya Hipersport 2024'");
+        System.out.println("-----------------------------------------------------------------------");
         bucle:
         while (true) {
             System.out.println("Por favor seleccione que desea hacer:");

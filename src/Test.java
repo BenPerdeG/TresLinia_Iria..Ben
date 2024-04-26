@@ -28,7 +28,4 @@ public class Test {
         j.jugarO(2,2);
         Assertions.assertEquals('o',j.tablero_actual[0][0]);
     }
-
-
-
 }
