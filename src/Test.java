@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 public class Test {
+
+    // Comprobar tablero en blanco
     @org.junit.jupiter.api.Test
-    void NuevaPartida() {
+    void Tablero_Blanco() {
         Joc j = new Joc();
         String linea1 = " | | ";
         String linea2 = " | | ";
@@ -16,8 +18,13 @@ public class Test {
         tablero[2] = linea2.toCharArray();
         tablero[3] = lineamid.toCharArray();
         tablero[4] = linea3.toCharArray();
-        Assertions.assertArrayEquals(tablero,j.tablero());
+        Assertions.assertArrayEquals(tablero, j.tablero());
 
     }
 
+    @org.junit.jupiter.api.Test
+    void TurnoJugador() {
+        Joc j = new Joc();
+        Assertions.assertTrue(j.get_jugador1());
+    }
 }

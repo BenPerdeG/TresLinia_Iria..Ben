@@ -1,5 +1,6 @@
 public class Joc {
 
+boolean turno_jugador1 = false;
 
     public static char[][]tablero(){
 
@@ -26,4 +27,14 @@ public class Joc {
                 System.out.println(tablero()[i]);
         }
     }
+
+    public boolean get_jugador1 (){
+        if(turno_jugador1){
+            turno_jugador1=false;
+        }else{
+            turno_jugador1 = true;
+        }
+        return turno_jugador1;
+    }
+
 }
