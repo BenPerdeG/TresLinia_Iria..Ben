@@ -19,10 +19,13 @@ public class Main {
                 Joc.tablero();
             }
         }
+
         //Definir con que carácter juega cada uno de los jugadores y quien comienza.
 
         System.out.println("La máquina juega con: 'x'");
         System.out.println("Usted juega con; 'o'");
+
+
     }
 
     public static void cargar_partida (){
