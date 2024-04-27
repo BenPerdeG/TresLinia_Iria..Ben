@@ -56,4 +56,23 @@ public class TUI {
             }
         }
     }
+
+    public static boolean jugada_inicial(int fila, int columna) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Comience la partida, juega con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
+
+        fila = sc.nextInt();
+        columna = sc.nextInt();
+
+        boolean fila_correcta = (0 < fila) && (fila < 4);
+        boolean col_correcta = (0 < columna) && (columna < 4);
+
+        if (!fila_correcta) {
+            System.out.println("La coordenada de la fila es incorrecta, inténtelo de nuevo");
+        } else if (!col_correcta) {
+            System.out.println("La coordenada de la columna es incorrecta, inténtelo de nuevo");
+        } else System.out.println("La posición de su ficha es: " + fila + " " + columna);
+        return false;
+    }
 }
