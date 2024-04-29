@@ -1,3 +1,4 @@
+import java.security.KeyStore;
 import java.util.Scanner;
 
 public class TUI {
@@ -97,6 +98,9 @@ public class TUI {
         }
     }
     catch(Exception f){
-        System.out.println("Error");}
+        System.out.println("Error");
+        Joc.tablero_actual = Joc.tablero_nuevo();
+        Joc.turno_jugador1 = true;
+        }
     }
 }
