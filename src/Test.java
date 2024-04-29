@@ -49,4 +49,30 @@ public class Test {
         //Coordenada completa valida
         Assertions.assertTrue(TUI.jugada_inicial(2, 2));
     }
+
+    @org.junit.jupiter.api.Test
+    public void final_partida() {
+        //horizontal
+        Joc.tablero_actual[0][0]='x';
+        Joc.tablero_actual[0][1]='x';
+        Joc.tablero_actual[0][2]='x';
+
+        Assertions.assertTrue(Joc.final_game());
+
+        //Diagonal
+        Joc.tablero_actual=Joc.tablero_nuevo();
+        Joc.tablero_actual[0][0]='x';
+        Joc.tablero_actual[1][1]='x';
+        Joc.tablero_actual[2][2]='x';
+
+        Assertions.assertTrue(Joc.final_game());
+
+        //Vertical
+        Joc.tablero_actual=Joc.tablero_nuevo();
+        Joc.tablero_actual[0][0]='x';
+        Joc.tablero_actual[1][0]='x';
+        Joc.tablero_actual[2][0]='x';
+
+        Assertions.assertTrue(Joc.final_game());
+    }
 }

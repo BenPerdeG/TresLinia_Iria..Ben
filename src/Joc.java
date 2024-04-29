@@ -60,4 +60,7 @@ public class Joc {
         TUI.jugar_partida();
     }
 
+    public static boolean final_game(){
+        return false;
+    }
 }
