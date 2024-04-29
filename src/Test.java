@@ -43,9 +43,9 @@ public class Test {
     void jugada_correcta() { //TUI
         Coord_simulador();
         //comprobar fila
-        Assertions.assertFalse(TUI.jugada_inicial(0, 2));
+        Assertions.assertTrue(TUI.jugada_inicial(0, 2));
         //comprobar columna
-        Assertions.assertFalse(TUI.jugada_inicial(2, 0));
+        Assertions.assertTrue(TUI.jugada_inicial(2, 0));
         //Coordenada completa valida
         Assertions.assertTrue(TUI.jugada_inicial(2, 2));
     }

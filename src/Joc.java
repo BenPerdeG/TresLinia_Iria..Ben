@@ -1,6 +1,6 @@
 public class Joc {
     boolean turno_jugador1 = true; // Inicia con el jugador 1
-    char [][] tablero_actual = tablero();
+    static char [][] tablero_actual = tablero();
 
 //INICIALIZAR EL TABLERO EN BLANCO
     public static char[][]tablero(){
@@ -30,7 +30,7 @@ public class Joc {
         return turno_jugador1;
     }
 
-    public void jugarX(int coord1, int coord2){
+    public static void jugarX(int coord1, int coord2){
 
         tablero_actual[coord1-1][coord2-1]='x';
     }
