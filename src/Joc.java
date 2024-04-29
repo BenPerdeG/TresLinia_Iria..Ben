@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Joc {
     static boolean turno_jugador1 = true; // Inicia con el jugador 1
     static char [][] tablero_actual = tablero_nuevo();
@@ -32,18 +34,30 @@ public class Joc {
 
     public static void jugarX(int coord1, int coord2){
         if (tablero_actual[coord1-1][coord2-1]==' '){
-            tablero_actual[coord1-1][coord2-1]='x';}
+            tablero_actual[coord1-1][coord2-1]='x';
+            Joc.mostrar_tablero();
+            //comprobar final
+            Joc.alternar_turno();
+        }
         else {
             System.out.println("Posición ocupada");
         }
+        TUI.jugar_partida();
     }
 
     public static void jugarO(int coord1, int coord2){
+        Scanner sc = new Scanner(System.in);
         if (tablero_actual[coord1-1][coord2-1]==' '){
-        tablero_actual[coord1-1][coord2-1]='o';}
+        tablero_actual[coord1-1][coord2-1]='o';
+            Joc.mostrar_tablero();
+            //comprobar final
+            Joc.alternar_turno();
+        }
         else {
             System.out.println("Posición ocupada");
         }
+
+        TUI.jugar_partida();
     }
 
 }

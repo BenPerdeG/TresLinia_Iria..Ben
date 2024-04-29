@@ -8,7 +8,7 @@ public class Main {
         int fila = 0;
         int columna = 0;
         TUI.jugada_inicial(fila, columna); //Entrada la nueva partida
-        Joc.mostrar_tablero();  // Muestra el tablero
+         // Muestra el tablero
     }
 
     public static void cargar_partida (){
