@@ -1,5 +1,5 @@
 public class Joc {
-    boolean turno_jugador1 = true; // Inicia con el jugador 1
+    static boolean turno_jugador1 = true; // Inicia con el jugador 1
     static char [][] tablero_actual = tablero_nuevo();
 
 //INICIALIZAR EL TABLERO EN BLANCO
@@ -20,9 +20,9 @@ public class Joc {
                 +tablero_actual[2][0]+"|"+tablero_actual[2][1]+"|"+tablero_actual[2][2]);
     }
 
-    public boolean alternar_turno (){
+    public static boolean alternar_turno(){
 
-        if(turno_jugador1){
+        if(!turno_jugador1){
             turno_jugador1=true;
         }else{
             turno_jugador1 = false;
@@ -31,13 +31,19 @@ public class Joc {
     }
 
     public static void jugarX(int coord1, int coord2){
-
-        tablero_actual[coord1-1][coord2-1]='x';
+        if (tablero_actual[coord1-1][coord2-1]==' '){
+            tablero_actual[coord1-1][coord2-1]='x';}
+        else {
+            System.out.println("Posición ocupada");
+        }
     }
 
-    public void jugarO(int coord1, int coord2){
-
-        tablero_actual[coord1-1][coord2-1]='o';
+    public static void jugarO(int coord1, int coord2){
+        if (tablero_actual[coord1-1][coord2-1]==' '){
+        tablero_actual[coord1-1][coord2-1]='o';}
+        else {
+            System.out.println("Posición ocupada");
+        }
     }
 
 }

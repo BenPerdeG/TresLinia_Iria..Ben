@@ -87,7 +87,16 @@ public class TUI {
             System.out.println("La coordenada de la columna es incorrecta, inténtelo de nuevo");
             return false;
         } else System.out.println("La posición de su ficha es: " + fila + " " + columna);
-        Joc.jugarX(fila,columna);
+
+        if (Joc.turno_jugador1){
+            Joc.jugarO(fila,columna);
+            Joc.alternar_turno();
+        }
+        else {
+            Joc.jugarX(fila,columna);
+            Joc.alternar_turno();
+        }
+
         return true;
     }
 }
