@@ -14,7 +14,7 @@ public class Test {
                 tab[i][j] = ' ';
             }
         }
-        Assertions.assertArrayEquals(tab,Joc.tablero());
+        Assertions.assertArrayEquals(tab,Joc.tablero_nuevo());
     }
     @org.junit.jupiter.api.Test
     void TurnoJugador() { //Joc

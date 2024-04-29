@@ -1,9 +1,9 @@
 public class Joc {
     boolean turno_jugador1 = true; // Inicia con el jugador 1
-    static char [][] tablero_actual = tablero();
+    static char [][] tablero_actual = tablero_nuevo();
 
 //INICIALIZAR EL TABLERO EN BLANCO
-    public static char[][]tablero(){
+    public static char[][]tablero_nuevo(){
         char tab [][] = new char[3][3];
         for (int i = 0; i<tab.length; i++){
             for (int j = 0; j<tab.length; j++){
@@ -15,9 +15,9 @@ public class Joc {
 
 //MOSTRAR TABLERO ACTUALIZADO
     public static void mostrar_tablero(){
-        System.out.println(tablero()[0][0]+"|"+tablero()[0][1]+"|"+tablero()[0][2]+"\n"
-                +tablero()[1][0]+"|"+tablero()[1][1]+"|"+tablero()[1][2]+"\n"
-                +tablero()[2][0]+"|"+tablero()[2][1]+"|"+tablero()[2][2]);
+        System.out.println(tablero_actual[0][0]+"|"+tablero_actual[0][1]+"|"+tablero_actual[0][2]+"\n"
+                +tablero_actual[1][0]+"|"+tablero_actual[1][1]+"|"+tablero_actual[1][2]+"\n"
+                +tablero_actual[2][0]+"|"+tablero_actual[2][1]+"|"+tablero_actual[2][2]);
     }
 
     public boolean alternar_turno (){
