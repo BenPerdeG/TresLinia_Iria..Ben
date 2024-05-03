@@ -2,7 +2,6 @@ import org.junit.jupiter.api.Assertions;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Test {
     // Comprobar tablero en blanco
