@@ -25,8 +25,10 @@ public class Joc {
     public static boolean alternar_turno(){
 
         if(!turno_jugador1){
+            System.out.println("Turno Jugador 1, ingrese su jugada: ");
             turno_jugador1=true;
         }else{
+            System.out.println("Turno Jugador 2, ingrese su partida: ");
             turno_jugador1 = false;
         }
         return turno_jugador1;
@@ -40,7 +42,7 @@ public class Joc {
             Joc.alternar_turno();
         }
         else {
-            System.out.println("Posición ocupada");
+            System.out.println("Posición ocupada, inténtelo de nuevo");
         }
         TUI.jugar_partida();
     }
@@ -54,13 +56,13 @@ public class Joc {
             Joc.alternar_turno();
         }
         else {
-            System.out.println("Posición ocupada");
+            System.out.println("Posición ocupada, intentelo de nuevo");
         }
 
         TUI.jugar_partida();
     }
 
-    public static boolean final_game(){
+    public static boolean final_partida(){
         return false;
     }
 }

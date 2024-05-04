@@ -7,8 +7,7 @@ public class Main {
     public static void nueva_partida(){
         int fila = 0;
         int columna = 0;
-        TUI.jugada_inicial(fila, columna); //Entrada la nueva partida
-         // Muestra el tablero
+        TUI.jugada_inicial(fila, columna);
     }
 
     public static void cargar_partida (){
@@ -16,11 +15,12 @@ public class Main {
         not_implemented();
     }
 
-    public static void congiguracion (){
+    public static void configuracion(){
 
         not_implemented();
     }
     public static void not_implemented (){
+
         System.out.println("Metódo no implementado\n");
     }
 }

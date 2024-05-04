@@ -1,4 +1,3 @@
-import java.security.KeyStore;
 import java.util.Scanner;
 
 public class TUI {
@@ -46,7 +45,7 @@ public class TUI {
                 case 3:
                     //Configuración
                     System.out.println("Su selección ha sido: Configuración");
-                    Main.congiguracion();
+                    Main.configuracion();
                     break;
                 case 4:
                     //Finalizar
@@ -59,9 +58,7 @@ public class TUI {
     }
 
     public static boolean jugada_inicial(int fila, int columna) {
-
-
-        System.out.println("Comience la partida, juega con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
+        System.out.println("Comienza la partida, jugador 1 con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
             while(true){
                 jugar_partida();
