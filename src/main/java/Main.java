@@ -4,10 +4,16 @@ public class Main {
         tui.menu();
     }
 
-    public static void nueva_partida(){
+    public static void nueva_partida() {
         int fila = 0;
         int columna = 0;
+
         TUI.jugada_inicial(fila, columna);
+
+        while (!Joc.tablero_completo()) {
+            TUI.jugar_partida();
+        }
+        Joc.final_partida();
     }
 
     public static void cargar_partida (){
@@ -21,7 +27,6 @@ public class Main {
     }
     public static void not_implemented (){
 
-        System.out.println("Metódo no implementado\n");
+        System.out.println("Método no implementado\n");
     }
 }
-
