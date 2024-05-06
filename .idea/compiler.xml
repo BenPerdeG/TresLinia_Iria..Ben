@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TresLinia_Iria..Ben" />
+        <module name="TresLinia_Iria..Ben-master" />
       </profile>
     </annotationProcessing>
   </component>

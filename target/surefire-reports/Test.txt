@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.027 s <<< FAILURE! - in Test
+final_partida  Time elapsed: 0.015 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at Test.final_partida(Test.java:63)
+
+jugada_correcta  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at Test.jugada_correcta(Test.java:49)
+
+una_jugada  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException
+	at Test.una_jugada(Test.java:30)
+
