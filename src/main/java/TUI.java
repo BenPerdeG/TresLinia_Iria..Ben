@@ -66,15 +66,21 @@ public class TUI {
     public static boolean jugada_inicial() {
         System.out.println("Comienza la partida, jugador 1 con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
-            while(true){
+            while (!Joc.tablero_completo()) {
                 jugar_partida();
-                return true;}
+                if (Joc.jugada_ganadora()) {
+                    Joc.final_partida();
+                    return true;
+                }
+            }
+            return false;
 
         } catch (Exception e) {
             System.out.println("Error de coordenadas. El formato es Fila 'espacio' Columna");
             return false;
         }
     }
+
 
     //DESARROLLO DEL JUEGO
     static void jugar_partida() {
