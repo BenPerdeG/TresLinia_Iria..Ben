@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         TUI tui = new TUI();
@@ -22,8 +24,8 @@ public class Main {
     }
 
     public static void configuracion(){
-
-        not_implemented();
+        System.out.println("Aqui en configuración puede cambiar el tamaño del tablero.(Formato 'fila' espacio 'columna').");
+        TUI.createConfig();
     }
     public static void not_implemented (){
 

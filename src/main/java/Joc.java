@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 public class Joc {
-    static int filas=3;
-    static int columnas=3;
+    static int filas;
+    static int columnas;
 
     static boolean turno_jugador1 = true; // Inicia con el jugador 1
     static char [][] tablero_actual = tablero_nuevo();
 
     //INICIALIZAR EL TABLERO EN BLANCO
     public static char[][]tablero_nuevo(){
+        TUI.readConfig();
         char tab [][] = new char[filas][columnas];
         for (int i = 0; i<tab.length; i++){
             for (int j = 0; j<tab.length; j++){
@@ -78,8 +79,8 @@ public class Joc {
 
     //perfecto funciona
     public static boolean tablero_completo(){
-        for (int i = 0; i < tablero_actual.length; i++) {
-            for (int j = 0; j < tablero_actual[i].length; j++) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
                 if (tablero_actual[i][j] == ' ') {
                     return false; // Retorna false si encuentra alguna casilla vacía
                 }

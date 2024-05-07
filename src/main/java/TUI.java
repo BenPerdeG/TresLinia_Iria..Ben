@@ -66,6 +66,7 @@ public class TUI {
     public static boolean jugada_inicial() {
         System.out.println("Comienza la partida, jugador 1 con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
+            Joc.tablero_nuevo();
             while (!Joc.tablero_completo()) {
                 jugar_partida();
                 if (Joc.jugada_ganadora()) {
@@ -113,18 +114,25 @@ public class TUI {
         }
     }
 
-    public static void createConfig(int filas, int columnas){
+    public static void createConfig(){
         File config = new File("config.txt");
         try {
-            FileWriter esc = new FileWriter("cofig.txt");
-            esc.write(filas + " " +columnas);
-            Scanner leer = new Scanner("config.txt");
-
-            Joc.filas=leer.nextInt();
-            Joc.columnas=leer.nextInt();
-
+            FileWriter esc = new FileWriter("config.txt");
+            Scanner sc = new Scanner(System.in);
+            int _1 = sc.nextInt();
+            int _2 = sc.nextInt();
+            esc.write(_1);
+            esc.write(_2);
+            esc.close();
         } catch (IOException e) {
             throw new RuntimeException("Error de Configuración");
         }
+    }
+    public static void readConfig(){
+        Scanner leer = new Scanner("config.txt");
+
+        Joc.filas=leer.nextInt();
+        Joc.columnas=leer.nextInt();
+        leer.close();
     }
 }
