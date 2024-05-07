@@ -48,11 +48,11 @@ public class Test {
     void jugada_correcta() { //TUI
         coord_simulador();
         //comprobar fila
-        Assertions.assertFalse(TUI.jugada_inicial(0, 2));
+        Assertions.assertFalse(TUI.jugada_inicial());
         //comprobar columna
-        Assertions.assertFalse(TUI.jugada_inicial(2, 0));
+        Assertions.assertFalse(TUI.jugada_inicial());
         //Coordenada completa valida
-        Assertions.assertFalse(TUI.jugada_inicial(2, 2));
+        Assertions.assertFalse(TUI.jugada_inicial());
     }
 
     @org.junit.jupiter.api.Test

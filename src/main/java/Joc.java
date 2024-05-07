@@ -1,12 +1,15 @@
 import java.util.Scanner;
 
 public class Joc {
+    static int filas=3;
+    static int columnas=3;
+
     static boolean turno_jugador1 = true; // Inicia con el jugador 1
     static char [][] tablero_actual = tablero_nuevo();
 
     //INICIALIZAR EL TABLERO EN BLANCO
     public static char[][]tablero_nuevo(){
-        char tab [][] = new char[3][3];
+        char tab [][] = new char[filas][columnas];
         for (int i = 0; i<tab.length; i++){
             for (int j = 0; j<tab.length; j++){
                 tab[i][j] = ' ';
@@ -16,10 +19,13 @@ public class Joc {
     }
 
     //MOSTRAR TABLERO ACTUALIZADO
-    public static void mostrar_tablero(){
-        System.out.println(tablero_actual[0][0]+"|"+tablero_actual[0][1]+"|"+tablero_actual[0][2]+"\n"
-                +tablero_actual[1][0]+"|"+tablero_actual[1][1]+"|"+tablero_actual[1][2]+"\n"
-                +tablero_actual[2][0]+"|"+tablero_actual[2][1]+"|"+tablero_actual[2][2]);
+    public static void mostrar_tablero(char [][] tablero_actual){
+        for (int i =0;i<filas;i++){
+            for (int j =0;j<columnas;j++){
+                System.out.print("|"+ tablero_actual[i][j]+"|");
+            }
+            System.out.println();
+        }
     }
 
     //TURNO DE JUGADORES Y FICHAS
@@ -37,7 +43,7 @@ public class Joc {
     public static boolean jugarX(int coord1, int coord2) {
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'x';
-            Joc.mostrar_tablero();
+            Joc.mostrar_tablero(tablero_actual);
             //comprobar final
             Joc.alternar_turno();
             return true;
@@ -51,7 +57,7 @@ public class Joc {
         Scanner sc = new Scanner(System.in);
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'o';
-            Joc.mostrar_tablero();
+            Joc.mostrar_tablero(tablero_actual);
             //comprobar final
             Joc.alternar_turno();
             return true;

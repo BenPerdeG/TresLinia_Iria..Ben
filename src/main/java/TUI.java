@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 //TODAS LAS ENTRADAS Y SALIDAS DE INFORMACIÓN
@@ -60,7 +63,7 @@ public class TUI {
     }
 
     //INICIAR JUEGO
-    public static boolean jugada_inicial(int fila, int columna) {
+    public static boolean jugada_inicial() {
         System.out.println("Comienza la partida, jugador 1 con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
             while(true){
@@ -101,6 +104,21 @@ public class TUI {
             System.out.println("Error");
             Joc.tablero_actual = Joc.tablero_nuevo();
             Joc.turno_jugador1 = true;
+        }
+    }
+
+    public static void createConfig(int filas, int columnas){
+        File config = new File("config.txt");
+        try {
+            FileWriter esc = new FileWriter("cofig.txt");
+            esc.write(filas + " " +columnas);
+            Scanner leer = new Scanner("config.txt");
+
+            Joc.filas=leer.nextInt();
+            Joc.columnas=leer.nextInt();
+
+        } catch (IOException e) {
+            throw new RuntimeException("Error de Configuración");
         }
     }
 }

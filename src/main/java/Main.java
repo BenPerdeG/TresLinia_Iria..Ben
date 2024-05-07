@@ -8,7 +8,7 @@ public class Main {
         int fila = 0;
         int columna = 0;
 
-        TUI.jugada_inicial(fila, columna);
+        TUI.jugada_inicial();
 
         while (!Joc.tablero_completo()) {
             TUI.jugar_partida();
