@@ -89,37 +89,65 @@ public class Joc {
         return true;
     }
 
-    public static boolean jugada_ganadora() {
-        return comprobar_horizontales() || comprobar_verticales() || comprobar_diagonales();
+    /* jugada_ganadora comprueba cuál es la ficha que se colocó en tres en línea. Modifico todos los
+    métodos de comprobar para que se pueda detectar el carácter x ó o */
+
+    public static char jugada_ganadora() {
+        char ficha;
+
+        ficha = comprobar_horizontales();
+
+        if (ficha != ' ') {
+            return ficha;
+        }
+        ficha = comprobar_verticales();
+        if (ficha != ' ') {
+            return ficha;
+        }
+        ficha = comprobar_diagonales();
+        return ficha;
     }
 
-    private static boolean comprobar_horizontales() {
+    public static char comprobar_horizontales() {
         for (int i = 0; i < 3; i++) {
             if (tablero_actual[i][0] != ' ' && tablero_actual[i][0] == tablero_actual[i][1] && tablero_actual[i][1] == tablero_actual[i][2]) {
-                return true;
+                System.out.println("Existe una horizontal ganadora");
+                return tablero_actual[i][0]; // Devuelve el carácter ganador.Existe linea ganadora
             }
         }
-        return false;
+        char resultado = comprobar_horizontales();
+        if (resultado != ' ') {
+            System.out.println("Existe una horizontal ganadora");
+        }
+        return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
-    private static boolean comprobar_verticales() {
-        for (int i = 0; i < 3; i++) {
-            if (tablero_actual[0][i] != ' ' && tablero_actual[0][i] == tablero_actual[1][i] && tablero_actual[1][i] == tablero_actual[2][i]) {
-                return true;
+    public static char comprobar_verticales() {
+        for (int j = 0; j < 3; j++) {
+            if (tablero_actual[0][j] != ' ' && tablero_actual[0][j] == tablero_actual[1][j] && tablero_actual[1][j] == tablero_actual[2][j]) {
+                return tablero_actual[0][j]; //Devuelve el carácter ganador. Existe una vertical ganadora
             }
         }
-        return true;
+        char resultado = comprobar_verticales();
+        if (resultado != ' ') {
+            System.out.println("Existe una vertical ganadora");
+        }
+        return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
-    private static boolean comprobar_diagonales() {
+    public static char comprobar_diagonales() {
         //Diagonal principal
         if (tablero_actual[0][0] != ' ' && tablero_actual[0][0] == tablero_actual[1][1] && tablero_actual[1][1] == tablero_actual[2][2]) {
-            return true;
+            return tablero_actual[0][0]; // Devuelve el carácter ganador en diagonal ganadora 1
         }
         //diagonal secundaria
         if (tablero_actual[0][2] != ' ' && tablero_actual[0][2] == tablero_actual[1][1] && tablero_actual[1][1] == tablero_actual[2][0]) {
-            return true;
+            return tablero_actual[0][2]; //diagonal ganadora 2
         }
-        return false;
+        char resultado = comprobar_diagonales();
+        if (resultado != ' ') {
+            System.out.println("Existe una diagonal ganadora");
+        }
+        return ' '; //no hay jugada ganadora en ninguna diagonal
     }
 }
