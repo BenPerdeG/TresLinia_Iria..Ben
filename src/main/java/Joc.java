@@ -38,7 +38,6 @@ public class Joc {
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'x';
             Joc.mostrar_tablero();
-            //comprobar final
             Joc.alternar_turno();
             return true;
         } else {
@@ -52,9 +51,9 @@ public class Joc {
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'o';
             Joc.mostrar_tablero();
-            //comprobar final
-            Joc.alternar_turno();
-            return true;
+
+                Joc.alternar_turno();
+                return true;
         } else {
             System.out.println("Posición ocupada, inténtelo de nuevo: ");
             return false;
@@ -65,8 +64,9 @@ public class Joc {
     public static void final_partida() {
         if (tablero_completo()) {
             System.out.println("EMPATE. La partida ha sido finalizada.");
-        } else if (!tablero_completo()) {
-            System.out.println("No hay más casillas libres.");
+        } else {
+            System.out.println("Ganador!!!!");
+
         }
     }
 
@@ -79,7 +79,7 @@ public class Joc {
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public static boolean jugada_ganadora() {
@@ -101,7 +101,7 @@ public class Joc {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     private static boolean comprobar_diagonales() {

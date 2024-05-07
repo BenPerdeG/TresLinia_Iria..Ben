@@ -9,11 +9,6 @@ public class Main {
         int columna = 0;
 
         TUI.jugada_inicial(fila, columna);
-
-        while (!Joc.tablero_completo()) {
-            TUI.jugar_partida();
-        }
-        Joc.final_partida();
     }
 
     public static void cargar_partida (){
