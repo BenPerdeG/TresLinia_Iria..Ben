@@ -41,46 +41,62 @@ public class Joc {
         return turno_jugador1;
     }
 
-    public static boolean jugarX(int coord1, int coord2) {
+   public static boolean jugarX(int coord1, int coord2) {
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'x';
-            Joc.mostrar_tablero(tablero_actual);
-            //comprobar final
-            Joc.alternar_turno();
-            return true;
+            Joc.mostrar_tablero();
+
+            char ganador = jugada_ganadora();
+
+            if (ganador != ' ') {
+                System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
+                final_partida();
+                return true;
+            }
+            alternar_turno();
+            return false;
         } else {
             System.out.println("Posición ocupada, inténtelo de nuevo: ");
             return false;
         }
     }
 
-    public static boolean jugarO(int coord1, int coord2) {
+     public static boolean jugarO(int coord1, int coord2) {
         Scanner sc = new Scanner(System.in);
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'o';
-            Joc.mostrar_tablero(tablero_actual);
-            //comprobar final
-            Joc.alternar_turno();
+            Joc.mostrar_tablero();
+
+            char ganador = jugada_ganadora();
+
+        if (ganador != ' ') {
+            System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 2 ('o') ha ganado!");
+            final_partida();
             return true;
+        }
+            alternar_turno();
+            return false;
         } else {
             System.out.println("Posición ocupada, inténtelo de nuevo: ");
             return false;
         }
     }
 
-    //FINALIZAR JUEGO
+     //FINALIZAR JUEGO
     public static void final_partida() {
-        if (tablero_completo()) {
-            System.out.println("EMPATE. La partida ha sido finalizada.");
-        } else if (!tablero_completo()) {
-            System.out.println("No hay más casillas libres.");
+
+        char ganador = jugada_ganadora();
+
+        if (ganador != ' ') {  // Verifica si hay un ganador primero
+            System.out.println("La partida ha sido finalizada.\n");
+        } else if (tablero_completo()) {  // verifica si el tablero está completo, si no hay ganador
+            System.out.println("EMPATE, no hay más casillas libres. \nLa partida ha sido finalizada.\n");
         }
     }
 
-    //perfecto funciona
     public static boolean tablero_completo(){
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
+        for (int i = 0; i < tablero_actual.length; i++) {
+            for (int j = 0; j < tablero_actual[i].length; j++) {
                 if (tablero_actual[i][j] == ' ') {
                     return false; // Retorna false si encuentra alguna casilla vacía
                 }
@@ -96,7 +112,6 @@ public class Joc {
         char ficha;
 
         ficha = comprobar_horizontales();
-
         if (ficha != ' ') {
             return ficha;
         }
@@ -110,43 +125,38 @@ public class Joc {
 
     public static char comprobar_horizontales() {
         for (int i = 0; i < 3; i++) {
-            if (tablero_actual[i][0] != ' ' && tablero_actual[i][0] == tablero_actual[i][1] && tablero_actual[i][1] == tablero_actual[i][2]) {
-                System.out.println("Existe una horizontal ganadora");
+            if (tablero_actual[i][0] != ' ' &&
+                tablero_actual[i][0] == tablero_actual[i][1] &&
+                tablero_actual[i][1] == tablero_actual[i][2]) {
                 return tablero_actual[i][0]; // Devuelve el carácter ganador.Existe linea ganadora
             }
-        }
-        char resultado = comprobar_horizontales();
-        if (resultado != ' ') {
-            System.out.println("Existe una horizontal ganadora");
         }
         return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
     public static char comprobar_verticales() {
         for (int j = 0; j < 3; j++) {
-            if (tablero_actual[0][j] != ' ' && tablero_actual[0][j] == tablero_actual[1][j] && tablero_actual[1][j] == tablero_actual[2][j]) {
+            if (tablero_actual[0][j] != ' ' &&
+                tablero_actual[0][j] == tablero_actual[1][j] &&
+                tablero_actual[1][j] == tablero_actual[2][j]) {
                 return tablero_actual[0][j]; //Devuelve el carácter ganador. Existe una vertical ganadora
             }
-        }
-        char resultado = comprobar_verticales();
-        if (resultado != ' ') {
-            System.out.println("Existe una vertical ganadora");
         }
         return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
     public static char comprobar_diagonales() {
         //Diagonal principal
-        if (tablero_actual[0][0] != ' ' && tablero_actual[0][0] == tablero_actual[1][1] && tablero_actual[1][1] == tablero_actual[2][2]) {
+        if (tablero_actual[0][0] != ' ' &&
+            tablero_actual[0][0] == tablero_actual[1][1] &&
+            tablero_actual[1][1] == tablero_actual[2][2]) {
             return tablero_actual[0][0]; // Devuelve el carácter ganador en diagonal ganadora 1
         }
         //diagonal secundaria
-        if (tablero_actual[0][2] != ' ' && tablero_actual[0][2] == tablero_actual[1][1] && tablero_actual[1][1] == tablero_actual[2][0]) {
+        if (tablero_actual[0][2] != ' ' &&
+            tablero_actual[0][2] == tablero_actual[1][1] &&
+            tablero_actual[1][1] == tablero_actual[2][0]) {
             return tablero_actual[0][2]; //diagonal ganadora 2
-        }
-        char resultado = comprobar_diagonales();
-        if (resultado != ' ') {
-            System.out.println("Existe una diagonal ganadora");
         }
         return ' '; //no hay jugada ganadora en ninguna diagonal
     }
