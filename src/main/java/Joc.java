@@ -1,26 +1,25 @@
 import java.util.Scanner;
 
 public class Joc {
-    static int filas;
-    static int columnas;
+     int filas;
+     int columnas;
 
-    static boolean turno_jugador1 = true; // Inicia con el jugador 1
-    static char [][] tablero_actual = tablero_nuevo();
+     boolean turno_jugador1 = true; // Inicia con el jugador 1
+     char [][] tablero_actual;
 
     //INICIALIZAR EL TABLERO EN BLANCO
-    public static char[][]tablero_nuevo(){
-        TUI.readConfig();
-        char tab [][] = new char[filas][columnas];
-        for (int i = 0; i<tab.length; i++){
-            for (int j = 0; j<tab.length; j++){
-                tab[i][j] = ' ';
+    public  void tablero_nuevo(){
+      //  TUI.readConfig();
+        tablero_actual = new char[filas][columnas];
+        for (int i = 0; i<tablero_actual.length; i++){
+            for (int j = 0; j<tablero_actual.length; j++){
+                tablero_actual[i][j] = ' ';
             }
         }
-        return tab;
     }
 
     //MOSTRAR TABLERO ACTUALIZADO
-    public static void mostrar_tablero(char [][] tablero_actual){
+    public  void mostrar_tablero(char [][] tablero_actual){
         for (int i =0;i<filas;i++){
             for (int j =0;j<columnas;j++){
                 System.out.print("|"+ tablero_actual[i][j]+"|");
@@ -30,7 +29,7 @@ public class Joc {
     }
 
     //TURNO DE JUGADORES Y FICHAS
-    public static boolean alternar_turno(){
+    public boolean alternar_turno(){
         if(!turno_jugador1){
             System.out.println("Turno Jugador 1, ingrese su jugada: ");
             turno_jugador1=true;
@@ -41,10 +40,10 @@ public class Joc {
         return turno_jugador1;
     }
 
-   public static boolean jugarX(int coord1, int coord2) {
+   public  boolean jugarX(int coord1, int coord2) {
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'x';
-            Joc.mostrar_tablero();
+            //Joc.mostrar_tablero();
 
             char ganador = jugada_ganadora();
 
@@ -61,11 +60,11 @@ public class Joc {
         }
     }
 
-     public static boolean jugarO(int coord1, int coord2) {
+     public  boolean jugarO(int coord1, int coord2) {
         Scanner sc = new Scanner(System.in);
         if (tablero_actual[coord1 - 1][coord2 - 1] == ' ') {
             tablero_actual[coord1 - 1][coord2 - 1] = 'o';
-            Joc.mostrar_tablero();
+            //Joc.mostrar_tablero();
 
             char ganador = jugada_ganadora();
 
@@ -83,7 +82,7 @@ public class Joc {
     }
 
      //FINALIZAR JUEGO
-    public static void final_partida() {
+    public  void final_partida() {
 
         char ganador = jugada_ganadora();
 
@@ -94,7 +93,7 @@ public class Joc {
         }
     }
 
-    public static boolean tablero_completo(){
+    public  boolean tablero_completo(){
         for (int i = 0; i < tablero_actual.length; i++) {
             for (int j = 0; j < tablero_actual[i].length; j++) {
                 if (tablero_actual[i][j] == ' ') {
@@ -108,7 +107,7 @@ public class Joc {
     /* jugada_ganadora comprueba cuál es la ficha que se colocó en tres en línea. Modifico todos los
     métodos de comprobar para que se pueda detectar el carácter x ó o */
 
-    public static char jugada_ganadora() {
+    public  char jugada_ganadora() {
         char ficha;
 
         ficha = comprobar_horizontales();
@@ -123,7 +122,7 @@ public class Joc {
         return ficha;
     }
 
-    public static char comprobar_horizontales() {
+    public  char comprobar_horizontales() {
         for (int i = 0; i < 3; i++) {
             if (tablero_actual[i][0] != ' ' &&
                 tablero_actual[i][0] == tablero_actual[i][1] &&
@@ -134,7 +133,7 @@ public class Joc {
         return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
-    public static char comprobar_verticales() {
+    public  char comprobar_verticales() {
         for (int j = 0; j < 3; j++) {
             if (tablero_actual[0][j] != ' ' &&
                 tablero_actual[0][j] == tablero_actual[1][j] &&
@@ -145,7 +144,7 @@ public class Joc {
         return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
-    public static char comprobar_diagonales() {
+    public  char comprobar_diagonales() {
         //Diagonal principal
         if (tablero_actual[0][0] != ' ' &&
             tablero_actual[0][0] == tablero_actual[1][1] &&

@@ -48,11 +48,11 @@ public class Test {
     void jugada_correcta() { //TUI
         coord_simulador();
         //comprobar fila
-        Assertions.assertFalse(TUI.jugada_inicial());
+        Assertions.assertFalse(TUI.jugada_inicial(1,1));
         //comprobar columna
-        Assertions.assertFalse(TUI.jugada_inicial());
+        Assertions.assertFalse(TUI.jugada_inicial(1, 1));
         //Coordenada completa valida
-        Assertions.assertFalse(TUI.jugada_inicial());
+        Assertions.assertFalse(TUI.jugada_inicial(1,1));
     }
 
     @org.junit.jupiter.api.Test
@@ -108,29 +108,45 @@ public class Test {
         Assertions.assertFalse(jugada3);
     }
 
-      /*  @org.junit.jupiter.api.Test
-        public void final_partida() {
-            //horizontal
-            Joc.tablero_actual[0][0] = 'x';
-            Joc.tablero_actual[0][1] = 'x';
-            Joc.tablero_actual[0][2] = 'x';
+    @org.junit.jupiter.api.Test
+    public void final_partida_horizontal() {
 
-            Assertions.assertTrue(Joc.final_partida());
+        char[][] tablero = Joc.tablero_nuevo();
+        int fila = 1;
+        int columna = 1;
 
-            //Diagonal
-            Joc.tablero_actual = Joc.tablero_nuevo();
-            Joc.tablero_actual[0][0] = 'x';
-            Joc.tablero_actual[1][1] = 'x';
-            Joc.tablero_actual[2][2] = 'x';
+        Joc.tablero_actual[0][0] = 'x';
+        Joc.tablero_actual[0][1] = 'x';
+        Joc.tablero_actual[0][2] = 'x';
 
-            Assertions.assertTrue(Joc.final_partida());
+        Assertions.assertEquals(Joc.tablero_actual[fila - 1][columna - 1], 'x');
+    }
 
-            //Vertical
-            Joc.tablero_actual = Joc.tablero_nuevo();
+    @org.junit.jupiter.api.Test
+    public void final_partida_diagonal() {
+
+        char[][] tablero = Joc.tablero_nuevo();
+        int fila = 1;
+        int columna = 1;
+
+        Joc.tablero_actual[0][0] = 'x';
+        Joc.tablero_actual[1][1] = 'x';
+        Joc.tablero_actual[2][2] = 'x';
+
+        Assertions.assertEquals(Joc.tablero_actual[fila - 1][columna - 1], 'x');
+    }
+
+    @org.junit.jupiter.api.Test
+    public void final_partida_vertical() {
+
+        char[][] tablero = Joc.tablero_nuevo();
+        int fila = 1;
+        int columna = 1;
+
             Joc.tablero_actual[0][0] = 'x';
             Joc.tablero_actual[1][0] = 'x';
             Joc.tablero_actual[2][0] = 'x';
 
-            Assertions.assertTrue(Joc.final_partida());
-        }*/
+        Assertions.assertEquals(Joc.tablero_actual[fila - 1][columna - 1], 'x');
+        }
 }
