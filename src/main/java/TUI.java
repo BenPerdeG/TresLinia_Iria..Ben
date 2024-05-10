@@ -63,18 +63,13 @@ public class TUI {
     }
 
     //INICIAR JUEGO
-    public static boolean jugada_inicial() {
-        System.out.println("Comienza la partida, jugador 1 con: 'o'. \n Ingrese su jugada en formato coordenada (fila columna)");
+    public static boolean jugada_inicial(int fila, int columna) {
+        System.out.println("Comienza la partida, jugador 1 con: 'x'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
-            Joc.tablero_nuevo();
-            while (!Joc.tablero_completo()) {
+            while (true) {
                 jugar_partida();
-                if (Joc.jugada_ganadora()) {
-                    Joc.final_partida();
-                    return true;
-                }
+                return true;
             }
-            return false;
 
         } catch (Exception e) {
             System.out.println("Error de coordenadas. El formato es Fila 'espacio' Columna");
@@ -83,34 +78,46 @@ public class TUI {
     }
 
 
-    //DESARROLLO DEL JUEGO
-    static void jugar_partida() {
-        Scanner sc = new Scanner(System.in);
-        int fila = sc.nextInt();
-        int columna = sc.nextInt();
+        //DESARROLLO DEL JUEGO
+        static void jugar_partida() {
+            Scanner sc = new Scanner(System.in);
+            int fila = sc.nextInt();
+            int columna = sc.nextInt();
 
-        boolean fila_correcta = (0 < fila) && (fila < 4);
-        boolean col_correcta = (0 < columna) && (columna < 4);
+            boolean fila_correcta = (0 < fila) && (fila < 4);
+            boolean col_correcta = (0 < columna) && (columna < 4);
 
-        try{
-            if (!fila_correcta) {
-                System.out.println("La coordenada de la fila es incorrecta, inténtelo de nuevo: ");
+            try {
+                                if (!fila_correcta || !col_correcta) {
+                    System.out.println("La coordenada de la fila o columna, es incorrecta, inténtelo de nuevo: ");
+                } else {
+                    System.out.println("La posición de su ficha es: " + fila + " " + columna);
+                }
+                boolean jugada_valida;
 
-            } else if (!col_correcta) {
-                System.out.println("La coordenada de la columna es incorrecta, inténtelo de nuevo: ");
-            } else System.out.println("La posición de su ficha es: " + fila + " " + columna);
+                if (Joc.turno_jugador1) {
+                    //turno del jugador 1, usa JugarX
+                    jugada_valida = Joc.jugarX(fila, columna);
+                } else {
+                    //turno del jugador 2, usa JugarO
+                    jugada_valida = Joc.jugarO(fila, columna);
+                }
 
-            if (Joc.turno_jugador1){
-                Joc.jugarO(fila,columna);
+                if (jugada_valida) {
+                    char ganador = Joc.jugada_ganadora();
+                    if (ganador != ' ') {
+                        break;
+                    } else if (Joc.tablero_completo()) {
+                        break;
+                    }
+                }
+                Joc.final_partida();
+                
+            } catch (Exception f) {
+                System.out.println("Error");
+                Joc.tablero_actual = Joc.tablero_nuevo();
+                Joc.turno_jugador1 = true;
             }
-            else {
-                Joc.jugarX(fila, columna);
-            }
-        }
-        catch(Exception f){
-            System.out.println("Error");
-            Joc.tablero_actual = Joc.tablero_nuevo();
-            Joc.turno_jugador1 = true;
         }
     }
 
