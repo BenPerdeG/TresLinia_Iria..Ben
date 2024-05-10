@@ -8,7 +8,7 @@ public class Joc {
      char [][] tablero_actual;
 
     //INICIALIZAR EL TABLERO EN BLANCO
-    public  void tablero_nuevo(){
+    public char[][] tablero_nuevo(){
       //  TUI.readConfig();
         tablero_actual = new char[filas][columnas];
         for (int i = 0; i<tablero_actual.length; i++){
@@ -16,6 +16,7 @@ public class Joc {
                 tablero_actual[i][j] = ' ';
             }
         }
+        return null;
     }
 
     //MOSTRAR TABLERO ACTUALIZADO

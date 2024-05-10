@@ -4,10 +4,11 @@ import java.util.Scanner;
 //TODAS LAS ENTRADAS Y SALIDAS DE INFORMACIÓN
 
 public class TUI {
-    public void mostraMisstage(String missatge){
+    public void mostraMisstage(String missatge) {
         System.out.println(missatge);
     }
-    public static short seleccion() {
+
+    public short seleccion() {
         //Selección de menú
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -35,13 +36,13 @@ public class TUI {
         System.out.println("-----------------------------------------------------------------------");
         bucle:
 //        while (true) {
-            System.out.println("Por favor seleccione que desea hacer:");
-            System.out.println(" 1.Nueva Partida \n 2.Cargar Partida \n 3.Configuración\n 4.Salir\n");
-          return seleccion();
+        System.out.println("Por favor seleccione que desea hacer:");
+        System.out.println(" 1.Nueva Partida \n 2.Cargar Partida \n 3.Configuración\n 4.Salir\n");
+        return seleccion();
     }
 
     //INICIAR JUEGO
-    public static boolean jugada_inicial(int fila, int columna) {
+    public boolean jugada_inicial(int fila, int columna) {
         System.out.println("Comienza la partida, jugador 1 con: 'x'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
             while (true) {
@@ -56,49 +57,50 @@ public class TUI {
     }
 
 
-        //DESARROLLO DEL JUEGO
-        static void jugar_partida() {
-            Scanner sc = new Scanner(System.in);
-            int fila = sc.nextInt();
-            int columna = sc.nextInt();
+    //DESARROLLO DEL JUEGO
+    void jugar_partida() {
+        Scanner sc = new Scanner(System.in);
+        Joc joc = new Joc();
+        int fila = sc.nextInt();
+        int columna = sc.nextInt();
 
-            boolean fila_correcta = (0 < fila) && (fila < 4);
-            boolean col_correcta = (0 < columna) && (columna < 4);
+        boolean fila_correcta = (0 < fila) && (fila < 4);
+        boolean col_correcta = (0 < columna) && (columna < 4);
 
-            try {
-                if (!fila_correcta || !col_correcta) {
-                    System.out.println("La coordenada de la fila o columna, es incorrecta, inténtelo de nuevo: ");
-                } else {
-                    System.out.println("La posición de su ficha es: " + fila + " " + columna);
-                }
-                boolean jugada_valida;
-
-                if (turno_jugador1) {
-                    //turno del jugador 1, usa JugarX
-                    jugada_valida = Joc.jugarX(fila, columna);
-                } else {
-                    //turno del jugador 2, usa JugarO
-                    jugada_valida = Joc.jugarO(fila, columna);
-                }
-
-                if (jugada_valida) {
-                    char ganador = Joc.jugada_ganadora();
-                    if (ganador != ' ') {
-                    } else if (Joc.tablero_completo()) {
-
-                    }
-                }
-                Joc.final_partida();
-                
-            } catch (Exception f) {
-                System.out.println("Error");
-                Joc.tablero_actual = Joc.tablero_nuevo();
-                Joc.turno_jugador1 = true;
+        try {
+            if (!fila_correcta || !col_correcta) {
+                System.out.println("La coordenada de la fila o columna, es incorrecta, inténtelo de nuevo: ");
+            } else {
+                System.out.println("La posición de su ficha es: " + fila + " " + columna);
             }
+            boolean jugada_valida;
+
+            if (joc.turno_jugador1) {
+                //turno del jugador 1, usa JugarX
+                jugada_valida = joc.jugarX(fila, columna);
+            } else {
+                //turno del jugador 2, usa JugarO
+                jugada_valida = joc.jugarO(fila, columna);
+            }
+
+            if (jugada_valida) {
+                char ganador = joc.jugada_ganadora();
+                if (ganador != ' ') {
+                } else if (joc.tablero_completo()) {
+
+                }
+            }
+            joc.final_partida();
+
+        } catch (Exception f) {
+            System.out.println("Error");
+            joc.tablero_actual = joc.tablero_nuevo();
+            joc.turno_jugador1 = true;
         }
     }
 
- /*   public static void createConfig(){
+
+    /* public void createConfig() {
         File config = new File("config.txt");
         try {
             FileWriter esc = new FileWriter("config.txt");
@@ -112,11 +114,15 @@ public class TUI {
             throw new RuntimeException("Error de Configuración");
         }
     }
-    public static void readConfig(){
+
+    public static void readConfig() {
         Scanner leer = new Scanner("config.txt");
 
-        Joc.filas=leer.nextInt();
-        Joc.columnas=leer.nextInt();
-        leer.close();
-    } */
 
+        joc.filas = leer.nextInt();
+        joc.columnas = leer.nextInt();
+        leer.close();
+    }*/
+
+
+}
