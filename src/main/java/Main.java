@@ -3,14 +3,14 @@
 public class Main {
     public static void main(String[] args) {
         TUI tui = new TUI();
-
+        Joc joc = new Joc();
 
         while (true) {
             switch (tui.menu()) {
                 case 1:
                     //Nueva partida
                     tui.mostraMisstage("Su selección ha sido: Nueva partida");
-                    nueva_partida();
+                    nueva_partida(tui, joc);
                     break;
                 case 2:
                     //Cargar partida
@@ -33,7 +33,7 @@ public class Main {
     }
 
 
-        public static void nueva_partida (TUI tui, Joc joc) {
+        private static void nueva_partida (TUI tui, Joc joc) {
             int fila = 0;
             int columna = 0;
             tui.jugada_inicial(fila, columna);
