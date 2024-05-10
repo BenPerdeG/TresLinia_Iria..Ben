@@ -6,7 +6,7 @@ public class Main {
         Joc joc = new Joc();
 
         while (true) {
-            switch (tui.menu()) {
+            switch (tui.mostrarMenu()) {
                 case 1:
                     //Nueva partida
                     tui.mostraMisstage("Su selección ha sido: Nueva partida");
@@ -31,11 +31,17 @@ public class Main {
             }
         }
     }
-
+Joc joc = new Joc();
 
         private static void nueva_partida (TUI tui, Joc joc) {
             int fila = 0;
             int columna = 0;
+            joc.novaPartida();
+            tui.mostrarTablero(joc.getTablero());
+
+
+
+
             tui.jugada_inicial(fila, columna);
 
             while (!joc.tablero_completo()) {

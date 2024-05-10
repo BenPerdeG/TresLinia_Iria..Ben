@@ -31,17 +31,34 @@ public class TUI {
         }
     }
 
-    public short menu() {
+    public short mostrarMenu() {
         System.out.println("Bienvenido al increíble y turbo dinámico 'Tres en Raya Hipersport 2024'");
         System.out.println("-----------------------------------------------------------------------");
-        bucle:
-//        while (true) {
-        System.out.println("Por favor seleccione que desea hacer:");
-        System.out.println(" 1.Nueva Partida \n 2.Cargar Partida \n 3.Configuración\n 4.Salir\n");
-        return seleccion();
+
+        while (true) {
+            System.out.println("Por favor seleccione que desea hacer:");
+            System.out.println(" 1.Nueva Partida \n 2.Cargar Partida \n 3.Configuración\n 4.Salir\n");
+            return seleccion();
+        }
     }
 
-    //INICIAR JUEGO
+    char [][] tablero;
+    int filas;
+    int columnas;
+
+
+
+    public  void mostrarTablero(char [][] tablero_actual){
+        for (int i =0;i<filas;i++){
+            for (int j =0;j<columnas;j++){
+                System.out.print("|"+ tablero_actual[i][j]+"|");
+            }
+            System.out.println();
+        }
+    }
+
+
+
     public boolean jugada_inicial(int fila, int columna) {
         System.out.println("Comienza la partida, jugador 1 con: 'x'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
@@ -75,7 +92,7 @@ public class TUI {
             }
             boolean jugada_valida;
 
-            if (joc.turno_jugador1) {
+            if (joc.turnoJugador1) {
                 //turno del jugador 1, usa JugarX
                 jugada_valida = joc.jugarX(fila, columna);
             } else {
@@ -95,7 +112,7 @@ public class TUI {
         } catch (Exception f) {
             System.out.println("Error");
             joc.tablero_actual = joc.tablero_nuevo();
-            joc.turno_jugador1 = true;
+            joc.turnoJugador1 = true;
         }
     }
 
