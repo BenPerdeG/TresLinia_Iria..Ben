@@ -4,7 +4,11 @@ import java.util.Scanner;
 //TODAS LAS ENTRADAS Y SALIDAS DE INFORMACIÓN
 
 public class TUI {
-    public void mostraMisstage(String missatge) {
+
+    Joc joc = new Joc();
+
+    public void mostrarMensaje(String missatge) {
+
         System.out.println(missatge);
     }
 
@@ -43,12 +47,13 @@ public class TUI {
     }
 
     char [][] tablero;
-    int filas;
-    int columnas;
 
+   public void coordenadas(Scanner sc) {
+       int filas = sc.nextInt();
+       int columnas = sc.nextInt();
+   }
 
-
-    public  void mostrarTablero(char [][] tablero_actual){
+    public  void mostrarTablero(char [][] tablero_actual, int filas, int columnas){
         for (int i =0;i<filas;i++){
             for (int j =0;j<columnas;j++){
                 System.out.print("|"+ tablero_actual[i][j]+"|");
@@ -63,7 +68,7 @@ public class TUI {
         System.out.println("Comienza la partida, jugador 1 con: 'x'. \n Ingrese su jugada en formato coordenada (fila columna)");
         try {
             while (true) {
-                jugar_partida();
+                recorrerPartida();
                 return true;
             }
 
@@ -75,7 +80,7 @@ public class TUI {
 
 
     //DESARROLLO DEL JUEGO
-    void jugar_partida() {
+    void recorrerPartida() {
         Scanner sc = new Scanner(System.in);
         Joc joc = new Joc();
         int fila = sc.nextInt();
@@ -101,17 +106,17 @@ public class TUI {
             }
 
             if (jugada_valida) {
-                char ganador = joc.jugada_ganadora();
+                char ganador = joc.jugadaGanadora();
                 if (ganador != ' ') {
                 } else if (joc.tablero_completo()) {
 
                 }
             }
-            joc.final_partida();
+            joc.finalPartida();
 
         } catch (Exception f) {
             System.out.println("Error");
-            joc.tablero_actual = joc.tablero_nuevo();
+            //joc.getTablero() = joc.getTablero();
             joc.turnoJugador1 = true;
         }
     }

@@ -9,57 +9,53 @@ public class Main {
             switch (tui.mostrarMenu()) {
                 case 1:
                     //Nueva partida
-                    tui.mostraMisstage("Su selección ha sido: Nueva partida");
-                    nueva_partida(tui, joc);
+                    tui.mostrarMensaje("Su selección ha sido: Nueva partida");
+                    partidaNueva(tui, joc, 3, 3);
                     break;
                 case 2:
                     //Cargar partida
-                    tui.mostraMisstage("Su selección ha sido: Cargar partida");
+                    tui.mostrarMensaje("Su selección ha sido: Cargar partida");
                     cargar_partida();
                     break;
                 case 3:
                     //Configuración
-                    tui.mostraMisstage("Su selección ha sido: Configuración");
+                    tui.mostrarMensaje("Su selección ha sido: Configuración");
                     configuracion();
                     break;
                 case 4:
                     //Finalizar
-                    tui.mostraMisstage("Su selección ha sido: Marcharse :C \n ¡¡Hasta luego!!");
+                    tui.mostrarMensaje("Su selección ha sido: Marcharse :C \n ¡¡Hasta luego!!");
                     return;
                 default:
                     System.out.println("Ha habido un error con el input. Prueba de nuevo: \n");
             }
         }
     }
-Joc joc = new Joc();
 
-        private static void nueva_partida (TUI tui, Joc joc) {
+        private void partidaNueva (TUI tui, Joc joc, int filas, int columnas) {
             int fila = 0;
             int columna = 0;
-            joc.novaPartida();
-            tui.mostrarTablero(joc.getTablero());
 
-
-
-
+            joc.nuevaPartida(fila, columna);
+            tui.mostrarTablero(joc.getTablero(), filas, columnas);
             tui.jugada_inicial(fila, columna);
 
             while (!joc.tablero_completo()) {
-                tui.jugar_partida();
+                tui.recorrerPartida();
             }
-            joc.final_partida();
+            joc.finalPartida();
         }
 
-        public static void cargar_partida () {
+        public void cargar_partida () {
 
             not_implemented();
         }
 
-        public static void configuracion () {
+        public void configuracion () {
             not_implemented();
         }
 
-        public static void not_implemented () {
+        public void not_implemented () {
 
             System.out.println("Método no implementado\n");
         }
