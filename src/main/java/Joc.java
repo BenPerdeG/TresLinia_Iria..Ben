@@ -1,13 +1,16 @@
 public class Joc {
     private char[][] tablero;
-    int turno;
     int turnoJugador1 = 1; // Inicia con el jugador 1
-
 
     public char[][] getTablero() {
         return tablero;
     }
-public void crearTablero(int filas, int columnas){
+
+    public int getTurnoJugador1() {
+        return turnoJugador1;
+    }
+
+    public void crearTablero(int filas, int columnas){
         tablero = new char[filas][columnas];
         for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
@@ -36,13 +39,12 @@ public void crearTablero(int filas, int columnas){
             tablero[coord1 - 1][coord2 - 1] = 'x';
             alternarTurno();
         }
-            if (tablero[coord1 - 1][coord2 - 1] == ' ') {
+        if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'o';
             alternarTurno();
         }
-        }
     }
-
+}
 
     public boolean tableroCompleto() {
         for (int i = 0; i < getTablero().length; i++) {

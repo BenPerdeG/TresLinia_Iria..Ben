@@ -53,10 +53,10 @@ int columnaJugador;
         columnaJugador = sc.nextInt();
    }
 
-    public  void mostrarTablero(char [][] tablero_actual, int filas, int columnas){
+    public  void mostrarTablero(char [][] tableroActual, int filas, int columnas){
         for (int i =0;i<filas;i++){
             for (int j =0;j<columnas;j++){
-                System.out.print("|"+ tablero_actual[i][j]+"|");
+                System.out.print("|"+ tableroActual[i][j]+"|");
             }
             System.out.println();
         }
