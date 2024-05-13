@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Joc {
-    TUI tui = new TUI();
     private char[][] tablero;
     int turno;
     boolean turnoJugador1; // Inicia con el jugador 1
@@ -63,7 +62,6 @@ public void crearTablero(int filas, int columnas){
 
             if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'o';
-            tui.mostrarTablero(tablero,tablero.length,tablero.length);
 
             char ganador = jugadaGanadora();
 

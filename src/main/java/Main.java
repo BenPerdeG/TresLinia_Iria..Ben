@@ -43,7 +43,7 @@ public class Main {
                     tui.recorrerPartida();
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
                     tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
-                    joc.finalPartida();
+
 
                 } catch (Exception f) {
                     joc.turnoJugador1 = true;
