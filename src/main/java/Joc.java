@@ -2,24 +2,28 @@ import java.util.Scanner;
 
 public class Joc {
     TUI tui = new TUI();
-
+    private char[][] tablero;
     int turno;
     boolean turnoJugador1; // Inicia con el jugador 1
 
+
     public char[][] getTablero() {
+
         return tablero;
     }
+public void crearTablero(int filas, int columnas){
+        tablero = new char[filas][columnas];
+        for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            tablero[i][j] = ' ';
+        }
+    }
+}
 
-    private char[][] tablero;
 //Muestar tablero nuevo
     public void nuevaPartida(int filas, int columnas) {
         //  TUI.readConfig();
-        tablero = new char[filas][columnas];
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero.length; j++) {
-                tablero[i][j] = ' ';
-            }
-        }
+        crearTablero(filas,columnas);
         turnoJugador1 = true;
     }
 
@@ -36,44 +40,42 @@ public class Joc {
         return turnoJugador1;
     }
 
-    public boolean jugarX(int coord1, int coord2) {
-        if (getTablero()[coord1 - 1][coord2 - 1] == ' ') {
-            getTablero()[coord1 - 1][coord2 - 1] = 'x';
-          //  nuevaPartida(getTablero());
+    public void jugar(int coord1, int coord2, char[][] tablero) {
+        if (turnoJugador1) {
+        if (tablero[coord1 - 1][coord2 - 1] == ' ') {
+            tablero[coord1 - 1][coord2 - 1] = 'x';
 
             char ganador = jugadaGanadora();
 
-            if (ganador != ' ') {
-                System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
-                finalPartida();
-                return true;
-            }
-            alternarTurno();
-            return false;
-        } else {
-            System.out.println("Posición ocupada, inténtelo de nuevo: ");
-            return false;
-        }
-    }
+                if (ganador != ' ') {
+                    System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
+                   return;
+                }
+                alternarTurno();
 
-    public boolean jugarO(int coord1, int coord2) {
-        Scanner sc = new Scanner(System.in);
-        if (getTablero()[coord1 - 1][coord2 - 1] == ' ') {
-            getTablero()[coord1 - 1][coord2 - 1] = 'o';
-            //Joc.mostrar_tablero();
+            } else {
+                System.out.println("Posición ocupada, inténtelo de nuevo: ");
+
+            }
+        }
+
+        else{
+
+            if (tablero[coord1 - 1][coord2 - 1] == ' ') {
+            tablero[coord1 - 1][coord2 - 1] = 'o';
+            tui.mostrarTablero(tablero,tablero.length,tablero.length);
 
             char ganador = jugadaGanadora();
 
             if (ganador != ' ') {
                 System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 2 ('o') ha ganado!");
-                finalPartida();
-                return true;
             }
             alternarTurno();
-            return false;
-        } else {
+        }
+        else {
             System.out.println("Posición ocupada, inténtelo de nuevo: ");
-            return false;
+        }
+
         }
     }
 
@@ -104,7 +106,7 @@ public class Joc {
     métodos de comprobar para que se pueda detectar el carácter x ó o */
 
     public char jugadaGanadora() {
-        char ficha;
+        char ficha = 'º';
 
         ficha = comprobarHorizontales();
         if (ficha != ' ') {
@@ -115,6 +117,9 @@ public class Joc {
             return ficha;
         }
         ficha = comprobarDiagonales();
+        if (ficha != ' ') {
+            return ficha;
+        }
         return ficha;
     }
 

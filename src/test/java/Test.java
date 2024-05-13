@@ -131,11 +131,11 @@ public class Test {
         int fila = 1;
         int columna = 1;
 
-        joc.tablero_actual[0][0] = 'x';
-        joc.tablero_actual[1][1] = 'x';
-        joc.tablero_actual[2][2] = 'x';
+        joc.novaPartida();[0][0] = 'x';
+        joc.novaPartida();[1][1] = 'x';
+        joc.novaPartida();[2][2] = 'x';
 
-        Assertions.assertEquals(joc.tablero_actual[fila - 1][columna - 1], 'x');
+        Assertions.assertEquals(joc.novaPartida();[fila - 1][columna - 1], 'x');
     }
 
     @org.junit.jupiter.api.Test

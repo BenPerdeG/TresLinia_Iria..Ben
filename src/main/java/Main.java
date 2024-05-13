@@ -32,30 +32,37 @@ public class Main {
         }
     }
 
-        private void partidaNueva (TUI tui, Joc joc, int filas, int columnas) {
-            int fila = 0;
-            int columna = 0;
+        private static void partidaNueva (TUI tui, Joc joc, int filas, int columnas) {
 
-            joc.nuevaPartida(fila, columna);
+            joc.nuevaPartida(filas, columnas);
             tui.mostrarTablero(joc.getTablero(), filas, columnas);
-            tui.jugada_inicial(fila, columna);
+            tui.jugada_inicial(filas, columnas);
 
             while (!joc.tablero_completo()) {
-                tui.recorrerPartida();
+                try{
+                    tui.recorrerPartida();
+                    joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
+                    tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
+                    joc.finalPartida();
+
+                } catch (Exception f) {
+                    joc.turnoJugador1 = true;
+                    System.out.println("Error");
+                }
             }
             joc.finalPartida();
         }
 
-        public void cargar_partida () {
+        public static void cargar_partida () {
 
             not_implemented();
         }
 
-        public void configuracion () {
+        public static void configuracion () {
             not_implemented();
         }
 
-        public void not_implemented () {
+        public static void not_implemented () {
 
             System.out.println("Método no implementado\n");
         }
