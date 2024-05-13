@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Joc {
     private char[][] tablero;
     int turno;
@@ -36,14 +34,7 @@ public void crearTablero(int filas, int columnas){
         if (turnoJugador1 % 2 == 0) {
         if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'x';
-
-            char ganador = jugadaGanadora();
-
-                if (ganador != ' ') {
-                    System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
-                   return;
-                }
-                alternarTurno();
+            alternarTurno();
 
             } else {
                 System.out.println("Posición ocupada, inténtelo de nuevo: ");
@@ -56,33 +47,16 @@ public void crearTablero(int filas, int columnas){
             if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'o';
 
-            char ganador = jugadaGanadora();
 
-            if (ganador != ' ') {
-                System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 2 ('o') ha ganado!");
-            }
             alternarTurno();
         }
-        else {
-            System.out.println("Posición ocupada, inténtelo de nuevo: ");
-        }
+
 
         }
     }
 
-    //FINALIZAR JUEGO
-    public void finalPartida() {
 
-        char ganador = jugadaGanadora();
-
-        if (ganador != ' ') {  // Verifica si hay un ganador primero
-            System.out.println("La partida ha sido finalizada.\n");
-        } else if (tablero_completo()) {  // verifica si el tablero está completo, si no hay ganador
-            System.out.println("EMPATE, no hay más casillas libres. \nLa partida ha sido finalizada.\n");
-        }
-    }
-
-    public boolean tablero_completo() {
+    public boolean tableroCompleto() {
         for (int i = 0; i < getTablero().length; i++) {
             for (int j = 0; j < getTablero()[i].length; j++) {
                 if (getTablero()[i][j] == ' ') {

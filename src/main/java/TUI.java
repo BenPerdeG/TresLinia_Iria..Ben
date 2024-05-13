@@ -84,6 +84,27 @@ int columnaJugador;
             }
 
     }
+    //FINALIZAR JUEGO
+    public void finalPartida(char ganador, boolean tablero_completo) {
+
+        if (ganador != ' ') {  // Verifica si hay un ganador primero
+            System.out.println("La partida ha sido finalizada.\n");
+        } else if (tablero_completo) {  // verifica si el tablero está completo, si no hay ganador
+            System.out.println("EMPATE, no hay más casillas libres. \nLa partida ha sido finalizada.\n");
+        }
+    }
+
+    public boolean Victoria(char ganador){
+
+
+        if (ganador != ' ') {
+            System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
+            return true;
+        } else {
+        System.out.println("Posición ocupada, inténtelo de nuevo: ");
+        return false;
+    }
+    }
 
 
     /* public void createConfig() {

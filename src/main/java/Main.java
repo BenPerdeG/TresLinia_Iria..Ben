@@ -38,24 +38,32 @@ public class Main {
             tui.mostrarTablero(joc.getTablero(), filas, columnas);
             tui.jugada_inicial(filas, columnas);
 
-            while (!joc.tablero_completo()) {
+            while (!joc.tableroCompleto()) {
                 try{
                     tui.recorrerPartida();
+
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
+
                     if(joc.turnoJugador1%2 == 0){
                         tui.mostrarMensaje("Turno del jugador 1, ingrese su jugada: ");
                     }else {
                         tui.mostrarMensaje("Turno del jugador 2, ingrese su jugada: ");
                     }
+
                     tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
 
+                    if(tui.Victoria(joc.jugadaGanadora())){
+                        return;
+                    }
 
                 } catch (Exception f) {
                     joc.turnoJugador1 = 0;
                     System.out.println("Error");
                 }
             }
-            joc.finalPartida();
+            tui.finalPartida(joc.jugadaGanadora(), joc.tableroCompleto());
+
+
         }
 
         public static void cargar_partida () {
