@@ -96,12 +96,10 @@ int columnaJugador;
 
     public boolean Victoria(char ganador){
 
-
         if (ganador != ' ') {
             System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
             return true;
-        } else {
-        System.out.println("Posición ocupada, inténtelo de nuevo: ");
+        }
         return false;
     }
     }
