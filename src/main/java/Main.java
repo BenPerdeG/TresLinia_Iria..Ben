@@ -42,11 +42,16 @@ public class Main {
                 try{
                     tui.recorrerPartida();
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
+                    if(joc.turnoJugador1%2 == 0){
+                        tui.mostrarMensaje("Turno del jugador 1, ingrese su jugada: ");
+                    }else {
+                        tui.mostrarMensaje("Turno del jugador 2, ingrese su jugada: ");
+                    }
                     tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
 
 
                 } catch (Exception f) {
-                    joc.turnoJugador1 = true;
+                    joc.turnoJugador1 = 0;
                     System.out.println("Error");
                 }
             }

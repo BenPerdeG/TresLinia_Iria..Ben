@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class Joc {
     private char[][] tablero;
     int turno;
-    boolean turnoJugador1; // Inicia con el jugador 1
+    int turnoJugador1 = 1; // Inicia con el jugador 1
 
 
     public char[][] getTablero() {
-
         return tablero;
     }
 public void crearTablero(int filas, int columnas){
@@ -23,24 +22,18 @@ public void crearTablero(int filas, int columnas){
     public void nuevaPartida(int filas, int columnas) {
         //  TUI.readConfig();
         crearTablero(filas,columnas);
-        turnoJugador1 = true;
+        turnoJugador1 = 0;
     }
 
 
     //TURNO DE JUGADORES Y FICHAS
-    public boolean alternarTurno() {
-        if (!turnoJugador1) {
-            System.out.println("Turno Jugador 1, ingrese su jugada: ");
-            turnoJugador1 = true;
-        } else {
-            System.out.println("Turno Jugador 2, ingrese su partida: ");
-            turnoJugador1 = false;
-        }
-        return turnoJugador1;
-    }
+    public int alternarTurno() {
+           turnoJugador1++;
+           return turnoJugador1;
+            }
 
     public void jugar(int coord1, int coord2, char[][] tablero) {
-        if (turnoJugador1) {
+        if (turnoJugador1 % 2 == 0) {
         if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'x';
 
