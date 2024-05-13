@@ -38,20 +38,13 @@ public void crearTablero(int filas, int columnas){
 
             } else {
                 System.out.println("Posición ocupada, inténtelo de nuevo: ");
-
             }
-        }
-
-        else{
+        }        else{
 
             if (tablero[coord1 - 1][coord2 - 1] == ' ') {
             tablero[coord1 - 1][coord2 - 1] = 'o';
-
-
             alternarTurno();
         }
-
-
         }
     }
 
