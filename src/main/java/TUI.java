@@ -102,7 +102,6 @@ int columnaJugador;
         }
         return false;
     }
-    }
 
 
     /* public void createConfig() {
