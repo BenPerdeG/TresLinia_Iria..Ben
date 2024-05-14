@@ -78,7 +78,7 @@ int columnaJugador;
 
 
             if (!fila_correcta || !col_correcta) {
-                System.out.println("La coordenada de la fila o columna, es incorrecta, inténtelo de nuevo: ");
+                System.out.println("Error. La coordenada de la fila o columna, es incorrecta, inténtelo de nuevo: ");
             } else {
                 System.out.println("La posición de su ficha es: " + filaJugador + " " + columnaJugador);
             }
@@ -90,17 +90,22 @@ int columnaJugador;
         if (ganador != ' ') {  // Verifica si hay un ganador primero
             System.out.println("La partida ha sido finalizada.\n");
         } else if (tablero_completo) {  // verifica si el tablero está completo, si no hay ganador
-            System.out.println("EMPATE, no hay más casillas libres. \nLa partida ha sido finalizada.\n");
+            System.out.println("EMPATE, no hay más casillas libres. \n \nLa partida ha sido finalizada.\n");
         }
     }
 
     public boolean victoria(char ganador){
 
-        if (ganador != ' ') {
-            System.out.println("¡¡¡FELICIDADES!!!. ¡El Jugador 1 ('x') ha ganado!");
-            return true;
+        if (ganador != ' ') {  // Hay un ganador
+            System.out.println("El juego ha terminado. \n");
+            if (ganador == 'x') {
+                System.out.println("¡¡¡FELICIDADES!!! ¡El Jugador 1 ('x') ha ganado! \n");
+            } else if (ganador == 'o') {
+                System.out.println("¡¡¡FELICIDADES!!! ¡El Jugador 2 ('o') ha ganado! \n");
+            }
+            return true;  // Devuelve true porque hay un ganador
         }
-        return false;
+        return false;  // No hay ganador
     }
 
 

@@ -40,8 +40,7 @@ public class Main {
 
             while (!joc.tableroCompleto()) {
                 try{
-                    tui.recorrerPartida();
-
+                    tui.recorrerPartida(); //Jugada y confirmación de la misma.
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
 
                     if(joc.getTurnoJugador1()%2 == 0){
@@ -58,7 +57,6 @@ public class Main {
 
                 } catch (Exception f) {
                     joc.turnoJugador1 = 0;
-                    System.out.println("Error");
                 }
             }
             tui.finalPartida(joc.jugadaGanadora(), joc.tableroCompleto());
