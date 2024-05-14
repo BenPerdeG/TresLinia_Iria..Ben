@@ -80,22 +80,28 @@ public class Joc {
 
     public char comprobarHorizontales(int config) {
 
-        for (int i = 0; i < config-2; i++) {
-            if (getTablero()[i][i] != ' ' &&
-                    getTablero()[i][i] == getTablero()[i][i+1] &&
-                    getTablero()[i][i+1] == getTablero()[i][i+2]) {
-                return getTablero()[i][i]; // Devuelve el carácter ganador.Existe linea ganadora
+        for (int i = 0; i < config; i++) {
+            for (int j =0; j<config-2; j++){
+            if (getTablero()[i][j] != ' ' &&
+                    getTablero()[i][j] == getTablero()[i][j+1] &&
+                    getTablero()[i][j+1] == getTablero()[i][j+2])
+                {
+                return getTablero()[i][j]; // Devuelve el carácter ganador.Existe linea ganadora
+                }
             }
         }
         return ' '; //no hay jugada ganadora en ninguna horizontal
     }
 
     public char comprobarVerticales(int config) {
-        for (int j = 0; j < config-2; j++) {
-            if (getTablero()[j][j] != ' ' &&
-                    getTablero()[j][j] == getTablero()[j+1][j] &&
-                    getTablero()[j+1][j] == getTablero()[j+2][j]) {
-                return getTablero()[j][j]; //Devuelve el carácter ganador. Existe una vertical ganadora
+        for (int i = 0; i < config-2; i++) {
+            for (int j =0; j<config; j++){
+                if (getTablero()[i][j] != ' ' &&
+                        getTablero()[i][j] == getTablero()[i+1][j] &&
+                        getTablero()[i+1][j] == getTablero()[i+2][j])
+                {
+                    return getTablero()[i][j]; // Devuelve el carácter ganador.Existe linea ganadora
+                }
             }
         }
         return ' '; //no hay jugada ganadora en ninguna horizontal
@@ -104,18 +110,26 @@ public class Joc {
     public char comprobarDiagonales(int config) {
         //Diagonal principal
 
-        for (int j = 0; j < config-2; j++) {
-        if (getTablero()[j][j] != ' ' &&
-                getTablero()[j][j] == getTablero()[j+1][j+1] &&
-                getTablero()[j+1][j+1] == getTablero()[j+2][j+2]) {
-            return getTablero()[j][j]; // Devuelve el carácter ganador en diagonal ganadora 1
+        for (int i = 0; i < config-2; i++) {
+            for (int j =0; j<config; j++){
+                if (getTablero()[i][j] != ' ' &&
+                        getTablero()[i][j] == getTablero()[i+1][j+1] &&
+                        getTablero()[i+1][j+1] == getTablero()[i+2][j+2])
+                {
+                    return getTablero()[i][j]; // Devuelve el carácter ganador.Existe linea ganadora
+                }
+            }
         }
         //diagonal secundaria
-        if (getTablero()[j][config-2] != ' ' &&
-                getTablero()[j][config-1] == getTablero()[j][config-2] &&
-                getTablero()[j+1][config-2] == getTablero()[j+2][config-3]) {
-            return getTablero()[j][config]; //diagonal ganadora 2
-        }
+        for (int i = 0; i < config-2; i++) {
+            for (int j =0; j<config; j++){
+                if (getTablero()[i][j] != ' ' &&
+                        getTablero()[i][j] == getTablero()[i+1][j] &&
+                        getTablero()[i+1][j] == getTablero()[i+2][j])
+                {
+                    return getTablero()[i][j]; // Devuelve el carácter ganador.Existe linea ganadora
+                }
+            }
         }
         return ' '; //no hay jugada ganadora en ninguna diagonal
     }
