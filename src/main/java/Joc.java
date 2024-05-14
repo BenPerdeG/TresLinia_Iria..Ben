@@ -111,7 +111,7 @@ public class Joc {
         //Diagonal principal
 
         for (int i = 0; i < config-2; i++) {
-            for (int j =0; j<config; j++){
+            for (int j =0; j<config-2; j++){
                 if (getTablero()[i][j] != ' ' &&
                         getTablero()[i][j] == getTablero()[i+1][j+1] &&
                         getTablero()[i+1][j+1] == getTablero()[i+2][j+2])
@@ -121,13 +121,13 @@ public class Joc {
             }
         }
         //diagonal secundaria
-        for (int i = 0; i < config-2; i++) {
-            for (int j =0; j<config; j++){
-                if (getTablero()[i][j] != ' ' &&
-                        getTablero()[i][j] == getTablero()[i+1][j] &&
-                        getTablero()[i+1][j] == getTablero()[i+2][j])
+        for (int i = 2; i < config; i++) {
+            for (int j = 2; j<config; j++){
+                if (getTablero()[i-2][j] != ' ' &&
+                        getTablero()[i-2][j] == getTablero()[i-1][j-1] &&
+                        getTablero()[i-1][j-1] == getTablero()[i][j-2])
                 {
-                    return getTablero()[i][j]; // Devuelve el carácter ganador.Existe linea ganadora
+                    return getTablero()[i-2][j]; // Devuelve el carácter ganador.Existe linea ganadora
                 }
             }
         }
