@@ -39,8 +39,8 @@ public class Main {
             tui.jugada_inicial(config, config);
 
             while (!joc.tableroCompleto()) {
-                try{
-                    tui.recorrerPartida();
+                //try{
+                    tui.recorrerPartida(config);
 
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
 
@@ -52,17 +52,17 @@ public class Main {
 
                     tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
 
-                    if(tui.victoria(joc.jugadaGanadora())){
+                    if(tui.victoria(joc.jugadaGanadora(config))){
                         return;
                     }
 
-                } catch (Exception f) {
+                /*} catch (Exception f) {
                     joc.turnoJugador1 = 0;
                     System.out.println("Error");
                     return;
-                }
+                }*/
             }
-            tui.finalPartida(joc.jugadaGanadora(), joc.tableroCompleto());
+            tui.finalPartida(joc.jugadaGanadora(config), joc.tableroCompleto());
 
 
         }

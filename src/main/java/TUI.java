@@ -74,11 +74,11 @@ int columnaJugador;
 
 
     //DESARROLLO DEL JUEGO
-    void recorrerPartida() {
+    void recorrerPartida( int config) {
 
         coordenadas(sc);
-        boolean fila_correcta = (0 < filaJugador) && (filaJugador < 4);
-        boolean col_correcta = (0 < columnaJugador) && (columnaJugador < 4);
+        boolean fila_correcta = (0 < filaJugador) && (filaJugador < config);
+        boolean col_correcta = (0 < columnaJugador) && (columnaJugador < config);
 
 
             if (!fila_correcta || !col_correcta) {
