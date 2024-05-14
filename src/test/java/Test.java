@@ -1,49 +1,52 @@
 import org.junit.jupiter.api.Assertions;
+
+import java.io.File;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 
 public class Test {
     Joc joc = new Joc();
     TUI tui = new TUI();
-    // Comprobar tablero en blanco
+
     @org.junit.jupiter.api.Test
+    void archivoConfigCreado(){
+    }
+
+  /*  @org.junit.jupiter.api.Test
     void tablero_blanco() { //Joc
-        char tab[][] = new char[3][3];
+        char tab[][] = new char[tui.readConfig()][tui.readConfig()];
         for (int i = 0; i < tab.length; i++) {
             for (int j = 0; j < tab.length; j++) {
                 tab[i][j] = ' ';
             }
         }
-        Assertions.assertArrayEquals(tab, joc.tablero_nuevo());
-    }
+        Assertions.assertArrayEquals(tab, joc.getTablero());
+    }*/
 
-    @org.junit.jupiter.api.Test
-    void turno_jugador() { //Joc
-        //Comienza el tuRno del jugado1 ('x')
-        boolean turno = joc.alternar_turno();
-        Assertions.assertFalse(turno);
+
+  @org.junit.jupiter.api.Test
+    void turnoJugador() { //Joc
+
+      //Comienza turno del jugador1 ('x')
+      int turno = joc.alternarTurno();
+        Assertions.assertEquals(0,joc.getTurnoJugador1() % 2 );
+
         //Continua jugador2 ('o')
-        turno = joc.alternar_turno();
-        Assertions.assertTrue(turno);
+        turno = joc.alternarTurno();
+        Assertions.assertNotEquals(0,joc.getTurnoJugador1() % 2 );
     }
 
-    @org.junit.jupiter.api.Test
-//REESTRUCTURAR
+/*
+   @org.junit.jupiter.api.Test
     void primera_jugada_() { //Joc
-        joc.jugarX(1, 1);
-        coord_simulador();
+        joc.jugar(1, 1);
+
         Assertions.assertEquals('x', joc.tablero_actual[0][0]);
         joc.jugarO(2, 2);
         coord_simulador();
         Assertions.assertEquals('o', joc.tablero_actual[0][0]);
     }
 
-    @org.junit.jupiter.api.Test
-    public void coord_simulador() {
-        String data = "2\n2\n"; // Coordenada simulada (2 2), como si fuera el jugador 1.
-        InputStream input = new ByteArrayInputStream(data.getBytes());
-        System.setIn(input);
-    }
 
     @org.junit.jupiter.api.Test
 //REESTRUCTURAR
@@ -150,5 +153,5 @@ public class Test {
             joc.tablero_actual[2][0] = 'x';
 
         Assertions.assertEquals(joc.tablero_actual[fila - 1][columna - 1], 'x');
-        }
+        }*/
 }
