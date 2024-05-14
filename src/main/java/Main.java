@@ -52,7 +52,7 @@ public class Main {
 
                     tui.mostrarTablero(joc.getTablero(),joc.getTablero().length,joc.getTablero().length);
 
-                    if(tui.Victoria(joc.jugadaGanadora())){
+                    if(tui.victoria(joc.jugadaGanadora())){
                         return;
                     }
 
@@ -62,8 +62,6 @@ public class Main {
                 }
             }
             tui.finalPartida(joc.jugadaGanadora(), joc.tableroCompleto());
-
-
         }
 
         public static void cargar_partida () {

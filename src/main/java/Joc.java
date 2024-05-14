@@ -34,17 +34,17 @@ public class Joc {
             }
 
     public void jugar(int coord1, int coord2, char[][] tablero) {
-        if (turnoJugador1 % 2 == 0) {
-        if (tablero[coord1 - 1][coord2 - 1] == ' ') {
-            tablero[coord1 - 1][coord2 - 1] = 'x';
-            alternarTurno();
-        }
-        if (tablero[coord1 - 1][coord2 - 1] == ' ') {
-            tablero[coord1 - 1][coord2 - 1] = 'o';
-            alternarTurno();
+
+        if (tablero[coord1 - 1][coord2 - 1] == ' ') {  // Asegúrate que la casilla está vacía
+            if (turnoJugador1 % 2 != 1) {
+                tablero[coord1 - 1][coord2 - 1] = 'x';
+            } else {
+                tablero[coord1 - 1][coord2 - 1] = 'o';
+            }
+            alternarTurno();  // Alternar el turno solo después de hacer una jugada válida
         }
     }
-}
+
 
     public boolean tableroCompleto() {
         for (int i = 0; i < getTablero().length; i++) {
