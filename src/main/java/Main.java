@@ -1,7 +1,7 @@
-
+import java.io.FileNotFoundException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         TUI tui = new TUI();
         Joc joc = new Joc();
 
@@ -10,7 +10,7 @@ public class Main {
                 case 1:
                     //Nueva partida
                     tui.mostrarMensaje("Su selección ha sido: Nueva partida");
-                    partidaNueva(tui, joc, 3, 3);
+                    partidaNueva(tui, joc, tui.readConfig());
                     break;
                 case 2:
                     //Cargar partida
@@ -20,27 +20,28 @@ public class Main {
                 case 3:
                     //Configuración
                     tui.mostrarMensaje("Su selección ha sido: Configuración");
-                    configuracion();
+                    configuracion(tui,joc);
                     break;
                 case 4:
                     //Finalizar
                     tui.mostrarMensaje("Su selección ha sido: Marcharse :C \n ¡¡Hasta luego!!");
                     return;
                 default:
-                    System.out.println("Ha habido un error con el input. Prueba de nuevo: \n");
+                    tui.mostrarMensaje("Ha habido un error con el input. Prueba de nuevo: \n");
             }
         }
     }
 
-        private static void partidaNueva (TUI tui, Joc joc, int filas, int columnas) {
+        private static void partidaNueva (TUI tui, Joc joc, int config) {
 
-            joc.nuevaPartida(filas, columnas);
-            tui.mostrarTablero(joc.getTablero(), filas, columnas);
-            tui.jugada_inicial(filas, columnas);
+            joc.nuevaPartida(config,config);
+            tui.mostrarTablero(joc.getTablero(), config, config);
+            tui.jugada_inicial(config, config);
 
             while (!joc.tableroCompleto()) {
                 try{
-                    tui.recorrerPartida(); //Jugada y confirmación de la misma.
+                    tui.recorrerPartida();
+
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
 
                     if(joc.getTurnoJugador1()%2 == 0){
@@ -57,9 +58,13 @@ public class Main {
 
                 } catch (Exception f) {
                     joc.turnoJugador1 = 0;
+                    System.out.println("Error");
+                    return;
                 }
             }
             tui.finalPartida(joc.jugadaGanadora(), joc.tableroCompleto());
+
+
         }
 
         public static void cargar_partida () {
@@ -67,8 +72,9 @@ public class Main {
             not_implemented();
         }
 
-        public static void configuracion () {
-            not_implemented();
+        public static void configuracion (TUI tui, Joc joc) {
+        tui.mostrarMensaje("Escriba cual desea sea el tamaño del tablero:");
+        tui.createConfig();
         }
 
         public static void not_implemented () {

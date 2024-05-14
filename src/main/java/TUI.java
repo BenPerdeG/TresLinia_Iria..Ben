@@ -1,4 +1,8 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 //TODAS LAS ENTRADAS Y SALIDAS DE INFORMACIÓN
@@ -53,10 +57,10 @@ int columnaJugador;
         columnaJugador = sc.nextInt();
    }
 
-    public  void mostrarTablero(char [][] tableroActual, int filas, int columnas){
+    public  void mostrarTablero(char [][] tablero_actual, int filas, int columnas){
         for (int i =0;i<filas;i++){
             for (int j =0;j<columnas;j++){
-                System.out.print("|"+ tableroActual[i][j]+"|");
+                System.out.print("|"+ tablero_actual[i][j]+"|");
             }
             System.out.println();
         }
@@ -90,7 +94,7 @@ int columnaJugador;
         if (ganador != ' ') {  // Verifica si hay un ganador primero
             System.out.println("La partida ha sido finalizada.\n");
         } else if (tablero_completo) {  // verifica si el tablero está completo, si no hay ganador
-            System.out.println("EMPATE, no hay más casillas libres. \n \nLa partida ha sido finalizada.\n");
+            System.out.println("EMPATE, no hay más casillas libres. \nLa partida ha sido finalizada.\n");
         }
     }
 
@@ -109,29 +113,44 @@ int columnaJugador;
     }
 
 
-    /* public void createConfig() {
+    public void createConfig() {
         File config = new File("config.txt");
         try {
             FileWriter esc = new FileWriter("config.txt");
             Scanner sc = new Scanner(System.in);
-            int _1 = sc.nextInt();
-            int _2 = sc.nextInt();
+            String _1 = sc.nextLine();
+            if (Integer.parseInt(_1)>10){
+                System.out.println("El tablero es muy grande, el limite es 10.\n Tablero por defecto establecido");
+                esc.write("3");
+                esc.close();
+            }
+            else if (Integer.parseInt(_1)<3){
+                System.out.println("El tablero es muy pequeño, el limite es 3.\n Tablero por defecto establecido");
+                esc.write("3");
+                esc.close();
+            }
+            else{
             esc.write(_1);
-            esc.write(_2);
             esc.close();
+            }
         } catch (IOException e) {
             throw new RuntimeException("Error de Configuración");
         }
     }
 
-    public static void readConfig() {
-        Scanner leer = new Scanner("config.txt");
+    public int readConfig() throws FileNotFoundException {
+        Scanner leer = new Scanner(new File("config.txt"));
+        try{
+            int config = leer.nextInt();
 
 
-        joc.filas = leer.nextInt();
-        joc.columnas = leer.nextInt();
-        leer.close();
-    }*/
+                leer.close();
+                return config;
+        }
+        catch (Exception a){
+            return -1;
+        }
+    }
 
 
 }
