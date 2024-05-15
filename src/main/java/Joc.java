@@ -1,3 +1,4 @@
+
 public class Joc {
     private char[][] tablero;
     int turnoJugador1 = 1; // Inicia con el jugador 1
@@ -33,7 +34,7 @@ public class Joc {
            return turnoJugador1;
             }
 
-    public void jugar(int coord1, int coord2, char[][] tablero) {
+    public boolean jugar(int coord1, int coord2, char[][] tablero) {
 
         if (tablero[coord1 - 1][coord2 - 1] == ' ') {  // Asegúrate que la casilla está vacía
             if (turnoJugador1 % 2 != 1) {
@@ -42,6 +43,11 @@ public class Joc {
                 tablero[coord1 - 1][coord2 - 1] = 'o';
             }
             alternarTurno();  // Alternar el turno solo después de hacer una jugada válida
+            return true;
+        }
+        else {
+            Main.ocupado();
+            return false;
         }
     }
 

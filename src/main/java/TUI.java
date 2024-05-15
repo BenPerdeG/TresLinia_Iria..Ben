@@ -68,7 +68,7 @@ int columnaJugador;
 
 
 
-    public void jugada_inicial(int fila, int columna) {
+    public void jugada_inicial() {
         System.out.println("Comienza la partida, jugador 1 con: 'x'. \n Ingrese su jugada en formato coordenada (fila columna)");
     }
 

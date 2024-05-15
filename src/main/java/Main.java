@@ -36,7 +36,7 @@ public class Main {
 
             joc.nuevaPartida(config,config);
             tui.mostrarTablero(joc.getTablero(), config, config);
-            tui.jugada_inicial(config, config);
+            tui.jugada_inicial();
 
             while (!joc.tableroCompleto()) {
                 try{
@@ -75,6 +75,10 @@ public class Main {
         public static void configuracion (TUI tui, Joc joc) {
         tui.mostrarMensaje("Escriba cual desea sea el tamaño del tablero:");
         tui.createConfig();
+        }
+        public static void  ocupado(){
+            TUI tui = new TUI();
+            tui.mostrarMensaje("Esa casilla esta ocupada, pruebe de nuevo");
         }
 
         public static void not_implemented () {
