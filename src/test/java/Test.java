@@ -10,6 +10,8 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     void archivoConfigCreado(){
+        File config = new File("config.txt");
+        Assertions.assertTrue(config.exists());
     }
 
   /*  @org.junit.jupiter.api.Test
