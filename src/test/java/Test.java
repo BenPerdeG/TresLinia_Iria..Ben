@@ -1,12 +1,12 @@
 import org.junit.jupiter.api.Assertions;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 
 
 public class Test {
     Joc joc = new Joc();
-    TUI tui = new TUI();
 
     @org.junit.jupiter.api.Test
     void archivoConfigCreado(){
@@ -14,9 +14,10 @@ public class Test {
         Assertions.assertTrue(config.exists());
     }
 
-  @org.junit.jupiter.api.Test
-    void tablero_blanco() throws FileNotFoundException { //Joc
-        joc.nuevaPartida(3,3);
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    void tablero_blanco(int config){ //Joc
+        joc.nuevaPartida(config,config);
         for (int i =0; i< joc.getTablero().length;i++) {
             for (int j = 0; j < joc.getTablero().length; j++) {
                 Assertions.assertEquals(' ', joc.getTablero()[i][j]);
@@ -38,9 +39,10 @@ public class Test {
     }
 
 
-   @org.junit.jupiter.api.Test
-    void primera_jugada_() { //Joc
-        joc.nuevaPartida(3,3);
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    void primera_jugada_(int config) { //Joc
+        joc.nuevaPartida(config,config);
         joc.jugar(1,1,joc.getTablero());
         Assertions.assertEquals('x', joc.getTablero()[0][0]);
         joc.jugar(2, 2, joc.getTablero());
@@ -51,16 +53,18 @@ public class Test {
     /*@org.junit.jupiter.api.Test
 //REESTRUCTURAR
     void jugada_correcta() { //TUI
-     //Benja:no se que se refiere este test
+
+    Benja:no se que se refiere este test
 
     }*/
 
 
 
 
-    @org.junit.jupiter.api.Test
-    void posicion_ocupada() {
-        joc.nuevaPartida(3,3);
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    void posicion_ocupada(int config) {
+        joc.nuevaPartida(config,config);
         // Colocar 'x' en una posición
 
         joc.jugar(1,1, joc.getTablero());
@@ -69,36 +73,40 @@ public class Test {
         Assertions.assertFalse(joc.jugar(1,1, joc.getTablero()));
     }
 
-    @org.junit.jupiter.api.Test
-    public void final_partida_horizontal() {
-        joc.nuevaPartida(3,3);
-        joc.jugar(1,1, joc.getTablero());
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void final_partida_horizontal(int config) {
+        joc.nuevaPartida(config,config);
+        joc.jugar(1,config-2, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(1,2, joc.getTablero());
+        joc.jugar(1,config-1, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(1,3, joc.getTablero());
-        Assertions.assertEquals('x',joc.comprobarHorizontales(3));
+        joc.jugar(1,config, joc.getTablero());
+        Assertions.assertEquals('x',joc.comprobarHorizontales(config));
+
     }
 
-    @org.junit.jupiter.api.Test
-    public void final_partida_diagonal() {
-        joc.nuevaPartida(3,3);
-        joc.jugar(1,1, joc.getTablero());
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void final_partida_diagonal(int config) {
+        joc.nuevaPartida(config,config);
+        joc.jugar(config-2,config-2, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(2,2, joc.getTablero());
+        joc.jugar(config-1,config-1, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(3,3, joc.getTablero());
-        Assertions.assertEquals('x',joc.comprobarDiagonales(3));
+        joc.jugar(config,config, joc.getTablero());
+        Assertions.assertEquals('x',joc.comprobarDiagonales(config));
     }
 
-    @org.junit.jupiter.api.Test
-    public void final_partida_vertical() {
-        joc.nuevaPartida(3,3);
-        joc.jugar(1,1, joc.getTablero());
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void final_partida_vertical(int config) {
+        joc.nuevaPartida(config,config);
+        joc.jugar(config-2,1, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(2,1, joc.getTablero());
+        joc.jugar(config-1,1, joc.getTablero());
         joc.alternarTurno();
-        joc.jugar(3,1, joc.getTablero());
-        Assertions.assertEquals('x',joc.comprobarVerticales(3));
+        joc.jugar(config,1, joc.getTablero());
+        Assertions.assertEquals('x',joc.comprobarVerticales(config));
         }
 }
