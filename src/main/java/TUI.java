@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.rmi.server.ExportException;
 import java.util.Scanner;
 
@@ -182,4 +184,16 @@ public char[][] leerGuardado(int config) throws FileNotFoundException {
 
 }
 
+public void crearDirectorio(){
+    File directorio = new File("directorio/");
+
+       try{
+           if(directorio.mkdir()){
+               System.out.println("Directorio Creado con éxito");
+           }
+
+       }catch (Exception e){
+           System.out.println("Error en la creación del fichero");
+       }
+    }
 }

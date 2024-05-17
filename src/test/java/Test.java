@@ -7,6 +7,7 @@ import java.io.File;
 
 public class Test {
     Joc joc = new Joc();
+    TUI tui = new TUI();
 
     @org.junit.jupiter.api.Test
     void archivoConfigCreado(){
@@ -16,7 +17,7 @@ public class Test {
 
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    void tablero_blanco(int config){ //Joc
+    void tablero_Blanco(int config){ //Joc
         joc.nuevaPartida(config,config);
         for (int i =0; i< joc.getTablero().length;i++) {
             for (int j = 0; j < joc.getTablero().length; j++) {
@@ -38,10 +39,9 @@ public class Test {
         Assertions.assertNotEquals(0,joc.getTurnoJugador1() % 2 );
     }
 
-
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    void primera_jugada_(int config) { //Joc
+    void primeraJugada_(int config) { //Joc
         joc.nuevaPartida(config,config);
         joc.jugar(1,1,joc.getTablero());
         Assertions.assertEquals('x', joc.getTablero()[0][0]);
@@ -49,10 +49,9 @@ public class Test {
         Assertions.assertEquals('o', joc.getTablero()[1][1]);
     }
 
-
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    void posicion_ocupada(int config) {
+    void posicionOcupada(int config) {
         joc.nuevaPartida(config,config);
         // Colocar 'x' en una posición
 
@@ -64,7 +63,7 @@ public class Test {
 
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    public void final_partida_horizontal(int config) {
+    public void finalPartidaHorizontal(int config) {
         joc.nuevaPartida(config,config);
         joc.jugar(1,config-2, joc.getTablero());
         joc.alternarTurno();
@@ -77,7 +76,7 @@ public class Test {
 
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    public void final_partida_diagonal(int config) {
+    public void finalPartidaDiagonal(int config) {
         joc.nuevaPartida(config,config);
         joc.jugar(config-2,config-2, joc.getTablero());
         joc.alternarTurno();
@@ -89,7 +88,7 @@ public class Test {
 
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
-    public void final_partida_vertical(int config) {
+    public void finalPartidaVertical(int config) {
         joc.nuevaPartida(config,config);
         joc.jugar(config-2,1, joc.getTablero());
         joc.alternarTurno();
@@ -98,4 +97,25 @@ public class Test {
         joc.jugar(config,1, joc.getTablero());
         Assertions.assertEquals('x',joc.comprobarVerticales(config));
         }
+
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void borrarFichero (int config) {
+    }
+
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void comprobarExisteFichero (int config) {
+    }
+
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void borrarDirectorio (int config) {
+    }
+
+    @ParameterizedTest
+    @CsvSource({"3", "10", "9384"})
+    public void comprobarExistedirectorio (int config) {
+    }
+
 }

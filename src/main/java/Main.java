@@ -78,7 +78,7 @@ public class Main {
         }
 
         public static void configuracion (TUI tui, Joc joc) {
-        tui.mostrarMensaje("Escriba cual desea sea el tamaño del tablero:");
+        tui.mostrarMensaje("Escriba el tamaño que desea sea el tamaño del tablero:");
         tui.createConfig();
         }
         public static void  ocupado(){
