@@ -156,6 +156,7 @@ int columnaJugador;
             return -1;
         }
     }
+
 public void crearGuardado(char[][]tablero){
     File config = new File("guardado.txt");
     try {
@@ -175,7 +176,7 @@ public char[][] leerGuardado(int config) throws FileNotFoundException {
     Scanner leer = new Scanner(new File("guardado.txt"));
     char[][] tablero = new char[config][config];
    for(int i =0; i<config;i++){
-
+    ;
    }
        return tablero;
 
