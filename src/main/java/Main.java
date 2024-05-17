@@ -41,7 +41,7 @@ public class Main {
 
             while (!joc.tableroCompleto()) {
                 try{
-                    tui.recorrerPartida(config);
+                    tui.recorrerPartida(config,joc.getTablero());
 
                     joc.jugar(tui.filaJugador, tui.columnaJugador, joc.getTablero());
 
@@ -67,7 +67,11 @@ public class Main {
 
 
         }
+        /*public static void guardarPartida(){
 
+        tui.crearGuardado(joc.getTablero());
+
+        }*/
         public static void cargar_partida () {
 
             not_implemented();

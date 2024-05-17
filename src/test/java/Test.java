@@ -50,17 +50,6 @@ public class Test {
     }
 
 
-    /*@org.junit.jupiter.api.Test
-//REESTRUCTURAR
-    void jugada_correcta() { //TUI
-
-    Benja:no se que se refiere este test
-
-    }*/
-
-
-
-
     @ParameterizedTest
     @CsvSource({"3", "10", "9384"})
     void posicion_ocupada(int config) {

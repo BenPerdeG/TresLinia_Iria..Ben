@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 import java.util.Scanner;
 
 //TODAS LAS ENTRADAS Y SALIDAS DE INFORMACIÓN
@@ -52,8 +53,12 @@ int columnaJugador;
 
     char [][] tablero;
 
-   public void coordenadas(Scanner sc) {
+   public void coordenadas(Scanner sc, char[][]tablero) {
         filaJugador= sc.nextInt();
+        if(filaJugador==-1){
+            crearGuardado(tablero);
+            return;
+        }
         columnaJugador = sc.nextInt();
    }
 
@@ -74,9 +79,9 @@ int columnaJugador;
 
 
     //DESARROLLO DEL JUEGO
-    void recorrerPartida( int config) {
+    void recorrerPartida( int config, char[][] tablero) {
 
-        coordenadas(sc);
+        coordenadas(sc,tablero);
         boolean fila_correcta = (0 < filaJugador) && (filaJugador < config);
         boolean col_correcta = (0 < columnaJugador) && (columnaJugador < config);
 
@@ -151,6 +156,29 @@ int columnaJugador;
             return -1;
         }
     }
+public void crearGuardado(char[][]tablero){
+    File config = new File("guardado.txt");
+    try {
+        FileWriter esc = new FileWriter("guardado.txt");
+        for (int i=0; i<tablero.length;i++){
+            for (int j=0; j<tablero.length;j++){
+                esc.write(tablero[i][j]);
+            }
+        }
+        esc.close();
+    }
+    catch(Exception a){
+        System.out.println("Error de Guardado");
+    }
+}
+public char[][] leerGuardado(int config) throws FileNotFoundException {
+    Scanner leer = new Scanner(new File("guardado.txt"));
+    char[][] tablero = new char[config][config];
+   for(int i =0; i<config;i++){
 
+   }
+       return tablero;
+
+}
 
 }
