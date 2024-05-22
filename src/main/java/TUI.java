@@ -188,10 +188,13 @@ public void crearDirectorio(){
     File directorio = new File("directorio/");
 
        try{
-           if(directorio.mkdir()){
-               System.out.println("Directorio Creado con éxito");
-           }
-
+           if (directorio.exists()) {
+                System.out.println("El directorio ya existe.");
+            }else {
+                if (directorio.mkdir()) {
+                    System.out.println("Directorio creado con éxito");
+                }
+            }
        }catch (Exception e){
            System.out.println("Error en la creación del fichero");
        }
